@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Próximamente | HUB DI LAD UNLa</title>
+  <meta
+    name="description"
+    content="Página en proceso creativo del HUB DI LAD UNLa."
+  >
+
+  <link
+    rel="icon"
+    href="assets/images/logohubfavicom.ico"
+    type="image/x-icon"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+
+  <script src="js/tailwind.config.js?v=1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="css/style.css?v=7">
+
+  <style>
+    .coming-soon-main {
+      display: grid;
+      min-height: 70vh;
+      padding: clamp(3.5rem, 8vw, 7rem) 1.5rem;
+      place-items: center;
+    }
+
+    .coming-soon {
+      width: min(100%, 1050px);
+    }
+
+    .coming-soon .section-tag {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.55rem 0.8rem;
+      color: #000;
+      background: #a6fff0;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .coming-soon h1 {
+      max-width: 900px;
+      margin: 0;
+      color: #090f0d;
+      font-family: "Roboto Mono", monospace;
+      font-size: clamp(3rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.075em;
+      line-height: 0.95;
+    }
+
+    .coming-soon .intro {
+      max-width: 690px;
+      margin: 1.8rem 0 0;
+      color: #090f0d;
+      font-size: clamp(0.9rem, 1.7vw, 1rem);
+      line-height: 1.55;
+    }
+
+    .countdown-section {
+      margin-top: clamp(2.8rem, 6vw, 4.5rem);
+    }
+
+    .countdown-heading {
+      margin: 0 0 0.8rem;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2px;
+      border: 2px solid #000;
+      background: #000;
+    }
+
+    .time-unit {
+      min-width: 0;
+      padding: clamp(1.2rem, 3.5vw, 2.2rem) 1rem;
+      background: #a6fff0;
+      text-align: center;
+    }
+
+    .time-value {
+      display: block;
+      font-family: "Roboto Mono", monospace;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.08em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-label {
+      display: block;
+      margin-top: 0.65rem;
+      font-family: "Roboto Mono", monospace;
+      font-size: clamp(0.65rem, 1.3vw, 0.78rem);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .coming-soon-actions {
+      display: flex;
+      margin-top: 1.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .coming-soon-button {
+      display: inline-flex;
+      min-height: 3rem;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid #000;
+      align-items: center;
+      gap: 0.65rem;
+      color: #fff;
+      background: #000;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 150ms ease;
+    }
+
+    .coming-soon-button:hover,
+    .coming-soon-button:focus-visible {
+      color: #000;
+      background: #a6fff0;
+    }
+
+    .launch-date {
+      margin: 0;
+      color: #555;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    .launch-message {
+      display: none;
+      margin: 0;
+      padding: 1.5rem;
+      border: 2px solid #000;
+      background: #a6fff0;
+      font-family: "Roboto Mono", monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .coming-soon-main {
+        padding-inline: 1rem;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar"></div>
+
+  <main class="coming-soon-main">
+    <section class="coming-soon" aria-labelledby="page-title">
+      <p class="section-tag">Página en proceso creativo</p>
+
+      <h1 id="page-title">PRÓXIMAMENTE</h1>
+
+      <p class="intro">
+        Estamos preparando este espacio para vos. Muy pronto vas a encontrar acá todos los contenidos 
+        que comprenden al HUB de Incubación de Diseño del LAD, como nuevos
+        contenidos, recursos, capacitaciones, su incubadora, proyectos, etc.
+      </p>
+
+      <div class="countdown-section">
+        <p class="countdown-heading">
+          Tiempo restante para el lanzamiento
+        </p>
+
+        <div
+          class="countdown"
+          id="countdown"
+          role="timer"
+          aria-label="Cuenta regresiva para el lanzamiento"
+        >
+          <div class="time-unit">
+            <span class="time-value" id="days">00</span>
+            <span class="time-label">Días</span>
+          </div>
+
+          <div class="time-unit">
+            <span class="time-value" id="hours">00</span>
+            <span class="time-label">Horas</span>
+          </div>
+
+          <div class="time-unit">
+            <span class="time-value" id="minutes">00</span>
+            <span class="time-label">Minutos</span>
+          </div>
+
+          <div class="time-unit">
+            <span class="time-value" id="seconds">00</span>
+            <span class="time-label">Segundos</span>
+          </div>
+        </div>
+
+        <p class="launch-message" id="launch-message" role="status">
+          ¡El nuevo espacio ya está disponible!
+        </p>
+      </div>
+
+      <div class="coming-soon-actions">
+        <a class="coming-soon-button" href="https://hubdiunla.github.io/HUB-DI-LAD/reddeexpertos">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          Volver al inicio
+        </a>
+
+        <p class="launch-date">LANZAMIENTO · 03.08.2026</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/components.js?v=1"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      /*
+       * Fecha de lanzamiento:
+       * 1 de agosto de 2026 a las 00:00, horario de Argentina.
+       */
+      const launchDate = new Date(
+        "2026-08-03T00:00:00-03:00"
+      ).getTime();
+
+      const countdown = document.getElementById("countdown");
+      const launchMessage = document.getElementById("launch-message");
+
+      const daysElement = document.getElementById("days");
+      const hoursElement = document.getElementById("hours");
+      const minutesElement = document.getElementById("minutes");
+      const secondsElement = document.getElementById("seconds");
+
+      let timer;
+
+      function pad(number) {
+        return String(number).padStart(2, "0");
+      }
+
+      function updateCountdown() {
+        const remaining = launchDate - Date.now();
+
+        if (remaining <= 0) {
+          countdown.hidden = true;
+          launchMessage.style.display = "block";
+
+          if (timer) {
+            clearInterval(timer);
+          }
+
+          return;
+        }
+
+        const days = Math.floor(remaining / 86400000);
+        const hours = Math.floor((remaining / 3600000) % 24);
+        const minutes = Math.floor((remaining / 60000) % 60);
+        const seconds = Math.floor((remaining / 1000) % 60);
+
+        daysElement.textContent = pad(days);
+        hoursElement.textContent = pad(hours);
+        minutesElement.textContent = pad(minutes);
+        secondsElement.textContent = pad(seconds);
+      }
+
+      updateCountdown();
+      timer = setInterval(updateCountdown, 1000);
+    });
+  </script>
+</body>
+</html>

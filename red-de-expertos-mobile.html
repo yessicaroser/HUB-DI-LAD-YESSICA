@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Red de Expertos | HUB DI LAD UNLa</title>
+  <meta name="description" content="Red de expertos LAD UNLa." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Red de Expertos | HUB DI LAD UNLa" />
+  <meta property="og:description" content="Red de Expertos LAD UNLa." />
+  <meta property="og:image" content="https://hubdiunla.github.io/HUB-DI-LAD/assets/images/logohubteal.png" />
+  <meta property="og:url" content="https://hubdiunla.github.io/HUB-DI-LAD/ofertarecursos.html" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Red de Expertos | HUB DI LAD UNLa" />
+  <meta name="twitter:description" content="Red de Expertos LAD UNLa." />
+  <meta name="twitter:image" content="https://hubdiunla.github.io/HUB-DI-LAD/assets/images/logohubteal.png" />
+
+  <link rel="icon" href="assets/images/logohubfavicom.ico" type="image/x-icon" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script src="js/tailwind.config.js?v=1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="css/style.css?v=7" />
+
+  <style>
+  /*
+    Usa el mismo padding horizontal que la sección de expertos.
+    El ancho del .container queda controlado por el CSS general del sitio.
+  */
+  .experts-search-section {
+    padding: 0 1.5rem 0.5rem;
+  }
+
+  .experts-search {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 28px;
+    background: #000;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .experts-search-title {
+    margin: 0 0 18px;
+    color: #fff;
+    font-family: "Roboto Mono", monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .experts-search-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 230px auto;
+    gap: 12px;
+  }
+
+  .experts-search-input-wrapper {
+    position: relative;
+    min-width: 0;
+  }
+
+  .experts-search-input-wrapper i {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    z-index: 1;
+    transform: translateY(-50%);
+    color: #000;
+    pointer-events: none;
+  }
+
+  /* Campo donde escribe la persona */
+  .experts-search input {
+    width: 100%;
+    min-height: 50px;
+    box-sizing: border-box;
+    padding: 12px 16px 12px 44px;
+    border: 2px solid #fff;
+    border-radius: 0;
+    outline: none;
+    background: #fff;
+    color: #000;
+    font-family: "Karla", sans-serif;
+    font-size: 1rem;
+  }
+
+  .experts-search input::placeholder {
+    color: #676767;
+    opacity: 1;
+  }
+
+  .experts-search input:focus {
+    border-color: #99f6e4;
+    outline: 2px solid #99f6e4;
+    outline-offset: 2px;
+  }
+
+  /* Selector de carrera */
+  .experts-search select {
+    width: 100%;
+    min-height: 50px;
+    box-sizing: border-box;
+    padding: 12px 38px 12px 14px;
+    border: 2px solid #fff;
+    border-radius: 0;
+    outline: none;
+    background: #000;
+    color: #fff;
+    font-family: "Karla", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .experts-search select option {
+    background: #fff;
+    color: #000;
+  }
+
+  .experts-search select:focus {
+    border-color: #99f6e4;
+    outline: 2px solid #99f6e4;
+    outline-offset: 2px;
+  }
+
+  /* Botón Limpiar */
+  .experts-clear-button {
+    min-height: 50px;
+    box-sizing: border-box;
+    padding: 0 24px;
+    border: 2px solid #fff;
+    border-radius: 0;
+    background: #000;
+    color: #fff;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .experts-clear-button:hover,
+  .experts-clear-button:focus-visible {
+    background: #fff;
+    color: #000;
+  }
+
+  .experts-results {
+    margin: 16px 0 0;
+    color: #fff;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.85rem;
+  }
+
+  .expert-hidden {
+    display: none !important;
+  }
+
+  .experts-no-results {
+    display: none;
+    margin-top: 30px;
+    padding: 30px;
+    border: 2px solid #000;
+    border-radius: 0;
+    text-align: center;
+    color: #000;
+  }
+
+  @media (max-width: 700px) {
+    .experts-search {
+      padding: 20px;
+    }
+
+    .experts-search-controls {
+      grid-template-columns: 1fr;
+    }
+
+    .experts-clear-button {
+      width: 100%;
+    }
+  }
+
+ .experts-search-section {
+  width: 100%;
+  padding: 0 1.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Mismo ancho central que bienvenida y expertos */
+.experts-search-section > .container {
+  width: 100%;
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.experts-search {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Centrar el bloque completo del buscador */
+.experts-search-section > .container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.experts-search {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.experts-search-section {
+  width: 100%;
+  padding: 0;
+}
+
+.experts-search-shell {
+  width: calc(100% - 3rem);
+  max-width: 1536px;
+  margin: 0 auto;
+}
+
+.experts-search {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+.experts-search-controls{
+    display:flex;
+    align-items:stretch;
+    gap:12px;
+    flex-wrap:nowrap;
+}
+
+#expertCategory{
+    flex:0 0 260px;
+    min-width:260px;
+}
+
+.experts-search-input-wrapper{
+    flex:1 1 auto;
+    min-width:300px;
+}
+
+.experts-search-button,
+.experts-clear-button{
+    flex:0 0 auto;
+    min-width:120px;
+}
+
+
+
+.experts-search-button{
+    min-height:50px;
+    box-sizing:border-box;
+    padding:0 24px;
+    border:2px solid #99f6e4;
+    border-radius:0;
+    background:#99f6e4;
+    color:#000;
+    font-family:"Roboto Mono", monospace;
+    font-size:0.85rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:background-color .2s,color .2s,border-color .2s;
+}
+
+.experts-search-button:hover,
+.experts-search-button:focus-visible{
+    background:#fff;
+    border-color:#fff;
+    color:#000;
+}
+
+
+.experts-clear-button{
+    background:transparent;
+    color:#fff;
+    border:1px solid #fff;
+}
+
+@media (max-width: 700px) {
+  .experts-search-shell {
+    width: calc(100% - 2rem);
+  }
+}
+
+
+/* === AJUSTES RESPONSIVE PARA TABLET Y MOBILE === */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video, iframe { max-width: 100%; }
+.resources-intro-content, .course-item, .course-item > div,
+.expert-data, .experts-search-controls { min-width: 0; }
+.resources-intro-content p, .course-item p, .expert-data p,
+.location-link span { overflow-wrap: anywhere; word-break: normal; }
+
+@media (max-width: 900px) {
+  .experts-search-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+  #expertCategory, .experts-search-input-wrapper,
+  .experts-search-button, .experts-clear-button {
+    width: 100%; min-width: 0; max-width: none;
+  }
+  #expertCategory, .experts-search-input-wrapper { grid-column: 1 / -1; }
+}
+
+@media (max-width: 700px) {
+  .resources-intro, .pt-1.pb-8.px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .resources-intro-card, .resources-intro-content {
+    width: 100%; box-sizing: border-box;
+  }
+  .resources-intro-content { padding-left: 0; padding-right: 0; }
+  .resources-intro-content h1 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+  .resources-intro-content h2 {
+    font-size: clamp(1.15rem, 5.5vw, 1.5rem);
+    line-height: 1.25;
+  }
+  .experts-search-shell { width: calc(100% - 2rem); }
+  .experts-search { padding: 1.25rem; }
+  .experts-search-title {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .experts-search-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+  #expertCategory, .experts-search-input-wrapper,
+  .experts-search-button, .experts-clear-button {
+    grid-column: 1;
+    width: 100%; min-width: 0; flex: none;
+  }
+  .experts-search input, .experts-search select,
+  .experts-search-button, .experts-clear-button {
+    min-height: 48px;
+    font-size: 16px;
+  }
+  .space-y-6.mt-10 { margin-top: 1.5rem !important; }
+  article.course-item {
+    position: relative;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  article.course-item > div:first-of-type {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+  }
+  article.course-item > div:first-of-type > img {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    max-height: 360px;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+  .course-social-links {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+  }
+  .course-social-link {
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+  .location-link { max-width: 100%; }
+  .course-item-title {
+    font-size: clamp(1.25rem, 6vw, 1.65rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+  .profile-tag { z-index: 2; }
+  .expert-data { width: 100%; box-sizing: border-box; }
+}
+
+@media (max-width: 380px) {
+  .resources-intro, .pt-1.pb-8.px-6 {
+    padding-left: .75rem !important;
+    padding-right: .75rem !important;
+  }
+  .experts-search-shell { width: calc(100% - 1.5rem); }
+  .experts-search { padding: 1rem; }
+  article.course-item { padding: .875rem; }
+}
+</style>
+
+  
+</head>
+
+<body>
+
+  <div id="navbar"></div>
+
+  <main>
+  <section class="resources-intro">
+    <div class="container">
+      <article class="resources-intro-card">
+        <div class="resources-intro-content">
+          <h1>Red de Expertos Profesionales del Diseño</h1>
+
+          <h2>Bienvenido a la Red de Expertos profesionales del Diseño del LAD</h2>
+
+          <p>
+            Este espacio reúne a profesionales especializados en diseño y en diversas problemáticas vinculadas al campo del Diseño, 
+            con el propósito de visibilizar y articular sus perfiles dentro de la comunidad académica y profesional.</p>
+
+<p>Su objetivo es fortalecer el vínculo entre la comunidad y los especialistas, promoviendo el acceso a conocimientos, 
+  experiencias y capacidades profesionales de manera integrada y colaborativa. Aquí encontrarás perfiles de especialistas 
+  en diseño, así como en diversas problemáticas relacionadas, acercando los profesionales a la comunidad y, 
+  al mismo tiempo, facilitar el acceso de la comunidad a estos profesionales.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+ <section class="experts-search-section" aria-label="Buscador de expertos">
+  <div class="experts-search-shell">
+
+    <div class="experts-search">
+      <h2 class="experts-search-title">
+        Buscar en la Red de Expertos
+      </h2>
+
+      <div class="experts-search-controls">
+
+        <select id="expertCategory" aria-label="Filtrar por carrera">
+          <option value="">Todas las carreras</option>
+          <option value="DI">Diseño Industrial (DI)</option>
+          <option value="DyCV">Diseño y Comunicación Visual (DyCV)</option>
+        </select>
+
+        <div class="experts-search-input-wrapper">
+          <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+
+          <input
+            type="search"
+            id="expertSearch"
+            placeholder="Especialidad, rubro, empresa o institución..."
+            aria-label="Buscar expertos"
+            autocomplete="off"
+          />
+        </div>
+
+        <button
+          type="button"
+          id="searchExperts"
+          class="experts-search-button"
+        >
+          Buscar
+        </button>
+
+        <button
+          type="button"
+          id="clearExpertFilters"
+          class="experts-clear-button"
+        >
+          Limpiar
+        </button>
+
+      </div>
+
+      <p
+        id="expertResults"
+        class="experts-results"
+        aria-live="polite"
+      ></p>
+    </div>
+
+  </div>
+</section>
+
+  <section class="pt-1 pb-8 px-6">
+    <div class="container">
+
+
+   
+
+        <div class="space-y-6 mt-10">
+
+          <article class="course-item">
+             <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Germán Kuglien.jpg" alt="German Kuglien" />
+             
+              <div class="course-social-links">
+
+              <a href="mailto:german.kuglien@gmail.com"
+              class="course-social-link"
+              aria-label="Correo electrónico">
+             <i class="fas fa-envelope"></i>
+             </a>
+
+             <a href="https://www.linkedin.com/in/german-kuglien/"
+             target="_blank"
+             class="course-social-link"
+             aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+             </a>
+
+            <a href="https://maps.google.com/?q=Lomas+de+Zamora"
+             target="_blank"
+            class="course-social-link location-link">
+            <i class="fas fa-location-dot"></i>
+           <span>Lomas de Zamora  </span>
+            </a>
+
+            </div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Mg DI Germán Kuglien</h3>
+<p>
+  Profesional técnico-comercial con más de 10 años de experiencia en el desarrollo de negocios y la gestión de 
+  proyectos complejos en industrias de alta tecnología. Actualmente, Jefe de Desarrollo de Nuevos Negocios en CONUAR S.A., 
+  una empresa líder en la fabricación de productos y sistemas tecnológicos para los sectores nuclear, aeroespacial, petroquímico 
+  y energético.  Su misión es impulsar la innovación, la competitividad y el crecimiento de la empresa, a partir de la 
+  investigación y el análisis de mercados, la adquisición de nuevas tecnologías, el desarrollo de nuevos productos y procesos, 
+  la formulación de casos de negocio para la obtención de financiamiento, y la vinculación con actores clave del sistema 
+  científico-tecnológico, gubernamental y empresario.   Cuenta con una sólida formación académica, con una Maestría en Dirección 
+  Comercial, una Especialización en Gestión de la Tecnología y la Innovación, y una Licenciatura en Diseño Industrial UNLa.   
+  
+</p>
+<p class="mt-4">
+Su campo de expertise anterior es la ingeniería y el diseño mecánico, con foco en los sectores oil&gas y metalmecánico. 
+  Ha liderado y participado en diversos proyectos de ingeniería y construcción en el rubro energético, tanto en Argentina 
+  como en el exterior.   Se apasiona por la tecnología, la creatividad y el aprendizaje continuo, y su motivación es el desafío de generar 
+  soluciones innovadoras y de valor para los clientes, y de impacto en la sociedad.
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +10 años ·
+    <strong>Especialidad:</strong> Innovación y desarrollo de negocios ·
+    <strong>Rubro:</strong> Nuclear, aeroespacial y energía ·
+    <strong>Empresa/Institución:</strong> CONUAR S.A.
+  </p>
+</div>
+</div>
+            </div>
+            
+          </article>
+
+          <article class="course-item">
+             <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/nadiabeluzo.jpeg" alt="Nadia Beluzo" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:nadiabeluzo@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/nadiabeluzo/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Banfield"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Banfield  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">MBA DI Nadia Beluzo</h3>
+<p>
+  Licenciada en Diseño Industrial UNLa, con más de diez años de experiencia en planificación de negocios, forecast y 
+  gestión de inventarios en entornos industriales y productivos.  A lo largo de su trayectoria ha combinado una mirada 
+  analítica y estratégica con una comprensión integral del producto y del negocio, liderando procesos de planificación end-to-end 
+  y trabajando de forma transversal con áreas de comercial, producción, compras y supply chain.  Ha participado en la toma de 
+  decisiones clave vinculadas a demanda, costos e inventarios, con foco en asegurar disponibilidad, optimizar stock y 
+  proteger el capital de trabajo, incluyendo experiencia en organizaciones con altos estándares operativos y de gestión.  
+  Cuenta con un MBA en Dirección de Negocios por EUDE Business School, que fortaleció su visión estratégica y de gestión.   
+  
+
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +10 años ·
+    <strong>Especialidad:</strong> Supply chain ·
+    <strong>Rubro:</strong> Gestión Estratégica / Diseño de Servicios, Diseño Textil ·
+    <strong>Empresa/Institución:</strong> BATUK S.A.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+           
+
+
+            <article class="course-item">
+               <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Pablo Caffaro - Pablo Caffaro.jpg" alt="Pablo Cafaro" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:pablofernandocaffaro@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://www.linkedin.com/in/pablocaffaro/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Lanus"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Lanús  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Pablo Caffaro</h3>
+<p>
+  Licenciado en Diseño Industrial UNLa y doctorando en Economía Circular y Producción Sustentable. Desde 2014, 
+  su trabajo se centra en transformar la intención sustentable en evidencia técnica, desarrollando metodologías para 
+  integrar criterios ambientales medibles en el diseño de productos.  Su enfoque es el ecodiseño cuantitativo: utiliza 
+  herramientas simplificadas de Análisis de Ciclo de Vida (ACV) para que las decisiones proyectuales se basen en datos 
+  reales y no en soluciones superficiales. Como docente e investigador en la Universidad Nacional de Lanús, dirije 
+  proyectos que vinculan la academia con la práctica profesional para impulsar una transición productiva genuina.  
+  
+</p>
+<p class="mt-4">
+Colabora con equipos que buscan:  Implementar economía circular desde la génesis del producto.  
+  Sustituir el discurso ambiental por métricas de impacto (ACV).  Desarrollar comunicación ambiental con respaldo técnico.  
+  Diseña procesos donde la sustentabilidad es un parámetro de calidad, no un accesorio.  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +10 años ·
+    <strong>Especialidad:</strong> Sustentabilidad ·
+    <strong>Rubro:</strong> Académico Universitario ·
+    <strong>Empresa/Institución:</strong> UNLa
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+             <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/emidinuzzo.jpg" alt="Emilia Di Nuzzo" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:emilia.dinuzzo@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/maria-emilia-di-nuzzo-2a924b150/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=CABA"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>CABA  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Emilia Di Nuzzo</h3>
+<p>
+  Diseñadora Industrial UNLa y maestranda en Metodologías de la Investigación Científica en la misma institución. 
+  Posee un posgrado en Diseño de Juegos, Juguetes e Interfaces Lúdicas FADU-UBA. Su perfil académico se ha centrado en el 
+  diseño inclusivo y en el estudio y aplicación de metodologías de diseño.  Docente en las materias Métodos de Diseño , 
+  Semiótica Aplicada al Diseño e Historia Social del Diseño I y II .   Actualmente, su campo de trabajo se orienta al 
+  desarrollo de soluciones proyectuales basadas en metodologías de diseño, dentro de una red de Talleres Protegidos del 
+  Área Metropolitana de Buenos Aires (AMBA), con foco en la mejora de procesos y entornos inclusivos.  
+  Desde el 2025 forma parte del consejo de redacción de la revista DSB - LAD-UNLa
+  
+
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Gestión del Diseño ·
+    <strong>Rubro:</strong> Vinculación Tecnológica del Diseño ·
+    <strong>Empresa/Institución:</strong> UNLa.
+  </p>
+</div>
+</div>
+</article>
+
+<article class="course-item">
+   <span class="profile-tag">DyCV</span>
+            <div>
+              <img src="assets/images/FOTOS/PabloMandel_V02_11 - Pablo Mandel.jpg" alt="Pablo Mandel" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:pmandel@circularstudio.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://www.instagram.com/circularstudio/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Olivos"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Olivos </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Esp. DyCV Pablo Mandel</h3>
+<p>
+  Nacido en Argentina en 1970, Pablo Mandel se graduó en Diseño Gráfico en la FADU, UBA, en 1995. Durante casi tres 
+  décadas, ha trabajado en el diseño y como editor de libros, colaborando con renombrados arquitectos, universidades, 
+  editoriales, músicos y artistas a nivel internacional. Desde 1997 dirige Circular Studio, y es editor y director de 
+  diseño en Pomera Ediciones. Tras emigrar a Canadá después de graduarse, vivió allí hasta 2013, momento en el cual 
+  regresó a Argentina. Es miembro profesional de la Sociedad de Diseñadores Gráficos de Canadá.  Sus diseños han sido 
+  reconocidos con numerosos premios y han sido publicados globalmente. Ha dictado conferencias y talleres en instituciones 
+  como UDLA en Ecuador, Thomas Jefferson University y Hartford University en EE. UU., UBC en Canadá y FADU UBA. Actualmente, 
+  dirige el Taller de Diseño Editorial en la UNLa y enseña en la Diplomatura en Artes del Libro, y es profesor de Comunicación 2 
+  en la cátedra Carpintero, en FADU UBA. Recientemente ha editado su primer libro, Diálogos Hipárquicos (2025), indagando en 
+  la relación entre la imagen y la palabra. Además, ha co-editado France Sketchbooks (2020) e In Italy (2024) con el 
+  arquitecto Laurie Olin. Paralelamente a su actividad como diseñador, editor y fotógrafo, ha sido miembro de la League of 
+  Crafty Guitarists, Guitar Circles y Música en Movimiento, tres ensambles internacionales de guitarra.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +20 años ·
+    <strong>Especialidad:</strong> Gestion del Diseño, Diseño Editorial, Asesoramiento o Consultoría ·
+    <strong>Rubro:</strong> Diseño Editorial                             ·
+    <strong>Empresa/Institución:</strong> Circular Studio.
+  </p>
+</div>
+</div>   
+
+          
+
+          </article>
+<article class="course-item">
+   <span class="profile-tag">DyCV</span>
+            <div>
+              <img src="assets/images/FOTOS/ValeDulixAleLopez - Valeria Dulitzky.png" alt="Valeria Dulitzky" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:valeria@zkysky.com.ar"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://www.behance.net/zkysky"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-behance"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=CABA"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>CABA  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">DG Valeria Dulitzky</h3>
+<p>
+  Diseñadora gráfica egresada de la Facultad de Arquitectura y Urbanismo  de la Universidad de Buenos Aires (FADU/UBA). 
+  Dirige el estudio de diseño ZkySky junto  a Julieta Ulanovsky. Fundado en 1989, cuando unieron en un proyecto común la 
+  última parte  de sus apellidos.   Es asesora en diseño y comunicación. Acompaña el desarrollo de proyectos e iniciativas 
+  públicas y privadas desde una mirada proyectual. Forma, dirige y acompaña equipos a medida de cada proyecto. Investiga, 
+  diagnostica, elabora estrategias, construye narrativas. Se especializa en diseño y rediseño de identidad.  Desde ZkySky 
+  despliega un formato para trabajar y pensar el diseño con amor por el patrimonio, haciendo del rescate emotivo un proyecto 
+  curatorial. En coautoría con Julieta, publicó tres libros. En 2005, El libro de los colectivos (registro gráfico de los buses 
+  porteños). En 2013, Divino Barolo sobre el emblemático Palacio Barolo de la ciudad de Buenos Aires, donde también tienen sus 
+  oficinas desde 1993. En 2019, coincidiendo con sus primeros 30 años como socias, publicaron su tercer libro, Extraordinario 
+  Planetario, sobre el ícono moderno porteño de los años 60. Siguiendo esa misma línea de rescate, participó en el diseño de 
+  tipografías como Abasto y Letras del Correo.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +20 años ·
+    <strong>Especialidad:</strong> Gestion del Diseño, Identidad Corporativa / Branding, Tipografía, Asesoramiento o Consultoría 
+    <strong>Rubro:</strong>Diseño Editorial, Comunicación Institucional / Política·
+    <strong>Empresa/Institución:</strong> ZkySky
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          </article>
+
+           <article class="course-item">
+             <span class="profile-tag">DyCV</span>
+            <div>
+              <img src="assets/images/FOTOS/marceloweissel.JPG" alt="Marcelo Weissel" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:weisselmarcelo@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://www.facebook.com/marcelo.weissel"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=CABA"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>CABA  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Dr Marcelo Weissel</h3>
+<p>
+  Miembro de la Asociación de Arqueólogos Profesionales de la República Argentina, del Instituto de Investigaciones 
+  Históricas de la Manzana de las Luces y de la Fundación de Historia Natural “Félix de Azara” - Universidad Maimónides. 
+  Consultor en equipos multidisciplinarios de evaluación de impacto ambiental en Patagonia, Mesopotamia y la región 
+  Pampeana (1997-2012), despliega interés por el urbanismo pluricultural, la educación patrimonial, y la investigación y 
+  gestión permanente de patrimonio arqueológico, urbano, portuario e industrial. A lo largo de su carrera ha 
+  publicado 17 libros,10 capítulos de libros, 48 artículos en revistas, libros de actas y resúmenes; ha impartido 
+  más de 50 conferencias, producido 16 evaluaciones de proyectos de investigación y publicaciones, ha realizado 
+  130 presentaciones en congresos, jornadas y talleres, 37 exposiciones museográficas, coordinado miles de visitas 
+  guiadas y actividades pedagógicas en la Ciudad de Buenos Aires y dictado 29 cursos extracurriculares en diversa 
+  regiones de la Argentina.   
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +20 años ·
+    <strong>Especialidad:</strong> Diseño Antrópico ·
+    <strong>Rubro:</strong> Patrimonio Urbano, Industrial, Marítimo ·
+    <strong>Empresa/Institución:</strong> Fundación Museo Arqueológico de La Boca - Cromwell y Cía SA
+  </p>
+</div>
+</div>
+            
+          </article>
+
+
+
+          </article>
+<article class="course-item">
+   <span class="profile-tag">DyCV</span>
+            <div>
+              <img src="assets/images/FOTOS/camila quinoñez.png" alt="Camila Quinoñez" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:Camilaqnz24@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://www.linkedin.com/in/qnz"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Temperley"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Temperley  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Esp. DyCV Camila Quiñonez</h3>
+<p>
+  Trabaja como UX/UI Designer hace casi 5 años y hoy está orientando su perfil para ser Product Designer. 
+  Su experiencia está muy enfocada en aplicaciones SaaS y en procesos complejos, especialmente dentro del ecosistema SAP. 
+  En su rol no solo diseña interfaces, sino que también participa en la gestión de la calidad de las aplicaciones y en la 
+  articulación entre programadores y el equipo funcional, funcionando como puente entre interlocutores con necesidades y 
+  lenguajes muy distintos. Algo muy valioso que le dejó la universidad fue entender el alcance que tiene el diseño dentro 
+  de la comunicación visual y estratégica. Me brindó herramientas para analizar problemas, ordenar información y mediar 
+  entre actores diversos y contextos complejos, algo que hoy aplica constantemente en su trabajo para traducir necesidades 
+  funcionales y técnicas en soluciones claras, materializadas y centradas en el usuario. Trabajó en migraciones de tecnología 
+  obsoleta, rediseño de aplicaciones y mejora de productos que no seguían buenas prácticas de UX/UI, aplicando sistemas de 
+  diseño y asegurando coherencia con la identidad corporativa. Se destaca especialmente en la resolución de problemas y 
+  en el diseño end to end de soluciones para procesos complejos.  
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Prototipado Rapido, Diseño UX/UI y Digital, Diseño Web, Asesoramiento o Consultoría ·
+    <strong>Rubro:</strong> Diseño Digital ·
+    <strong>Empresa/Institución:</strong> Softtek. Cliente YPF.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+<article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/lucas duran.png" alt="Lucas Duran" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:industrix.di@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/lucas-m-dur%C3%A1n-01392a31/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Lomas+de+Zamora"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Lomas de Zamora </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Lucas Duran</h3>
+<p>
+  Licenciado en Diseño Industrial UNLa con amplia experiencia en el desarrollo de productos y procesos. 
+  A lo largo de su carrera, me ha especializado en el diseño de productos plásticos y metálicos, 
+  destacando la fabricación por inyección de plásticos, corte y estampados de metales, lo que le ha 
+  permitido optimizar y mejorar la eficiencia en la producción. Ha trabajado en diversos proyectos que 
+  abarcan desde la concepción inicial hasta la implementación final, siempre con un enfoque en la innovación y el 
+  desarrollo de estrategias efectivas.   Su compromiso con la sostenibilidad y la economía circular lo impulsa a 
+  buscar soluciones que no solo sean funcionales, sino también responsables con el medio ambiente. Además, tiene 
+  experiencia en la gestión de proyectos, así como en consultoría y asesoramiento, ayudando a empresas a mejorar 
+  sus procesos y productos. Ha diseñado y desarrollado moldes, matrices y prototipos, lo que le ha permitido iterar 
+  y perfeccionar mis ideas en cada etapa del proceso de creación. 
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +15 años ·
+    <strong>Especialidad:</strong> Sustentabilidad y Materiales, Modelado 3D y Fabricación Digital, Diseño de Luminarias·
+    <strong>Rubro:</strong> Diseño de Productos / Mobiliario ·
+    <strong>Empresa/Institución:</strong> Industrix.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Clari armiento.jpeg" alt="Clara Armiento" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:mclaraarmiento@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/mcarmiento"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Barcelona+España"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Barcelona - España  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Clara Armiento</h3>
+<p>
+  Diseñadora industrial UNLa y Product Manager enfocada en desarrollo de producto y marca, con formación 
+  técnica en diseño industrial y visual. Especializada en gestionar el ciclo completo de producto desde la 
+  idea hasta el lanzamiento. Actualmente trabaja en Barcelona, en una marca de retail internacional, 
+  coordinando el lifecycle de producto en una compañía de gran escala, optimizando procesos y alineando 
+  equipos de producto, diseño y compras. Ha liderado múltiples proyectos de diseño de producto, packaging y 
+  marca, logrando mejoras concretas en costos, tiempos y posicionamiento. Además, desarrolló un producto y su 
+  business plan para una startup de la industria médica, reconocido en Incubando Salud Argentina y otros premios de 
+  innovación. Su perfil combina visión estratégica con conocimiento técnico en materiales, producción y experiencia de marca.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Diseño de Productos / Mobiliario·
+    <strong>Rubro:</strong> Diseño de Producto·
+    <strong>Empresa/Institución:</strong> Muy Mucho.
+  </p>
+</div>
+</div>
+
+          </article>
+
+<article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/nico lamberti.png" alt="Nicolás Lamberti" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:nicolaslamberti.di@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://www.linkedin.com/in/nicol%C3%A1s-lamberti-72a95688/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Maipu"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Maipú - Mendaoza </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Nicolás lamberti</h3>
+<p>
+  Diseñador Industrial UNLa, con amplia experiencia en coordinación de equipos de trabajo en Pymes. 
+  Desde hace más de 15 años está al frente de desarrollos de proyectos de imagen corporativa y mobiliario 
+  urbano abarcando todas las etapas del proceso. Su paso por el DPME del IAE y los años de trabajo en la industria 
+  le permitieron interactuar de forma dinámica con diferentes colaboradores, profesionales, clientes y proveedores, 
+  intentando siempre ofrecer soluciones creativas a los más complejos desafíos
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +15 años ·
+    <strong>Especialidad:</strong> POP, Diseño de Mobiliario y Carteleria gigante
+    <strong>Rubro:</strong> Diseño POP, Diseño de Productos, Identidad Corporativa / Branding                            ·
+    <strong>Empresa/Institución:</strong> Grupo Flexa
+  </p>
+</div>
+</div>   
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Gastónarchuvi.jpg" alt="Gastón Archuvi" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:gaston_archuvi@yahoo.com.ar"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/gaston-archuvi/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Bernal"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Bernal  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Gastón Archuvi</h3>
+<p>
+  Diseñador Industrial UNLa con más de 15 años de experiencia en el desarrollo, fabricación e implementación de soluciones 
+  tecnológicas para entornos industriales de alta exigencia. Su trayectoria combina diseño de producto, ingeniería mecánica, 
+  procesos de manufactura, automatización y gestión de proyectos, participando en iniciativas vinculadas a la industria nuclear, 
+  equipamiento industrial y desarrollo tecnológico. Se caracteriza por tener una visión integradora que conecta el diseño, la ingeniería y 
+  la gestión, orientada a transformar ideas en soluciones concretas, eficientes y sostenibles. Su objetivo es contribuir desde 
+  una mirada práctica y multidisciplinaria al fortalecimiento de la vinculación entre universidad, industria e innovación.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +20 años ·
+    <strong>Especialidad:</strong> Diseño e Ingenieria mecánica en el rubro nuclear·
+    <strong>Rubro:</strong> Aeroespacial·
+    <strong>Empresa/Institución:</strong> CONUAR.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/milagrossanmartin.jpeg" alt="Milagros San Martin" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:miliisanmartin@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href=""
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Adrogue"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Adrogué  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Milagros San Martín</h3>
+<p>
+  Diseñadora Industrial UNLa especializada en desarrollo de productos textiles e indumentaria, con 
+  experiencia en gestión de producción, desarrollo de proyectos y docencia universitaria. Combina 
+  conocimientos de diseño, materiales, procesos productivos y gestión para transformar ideas en productos viables, 
+  funcionales y comercialmente competitivos. Cuenta con experiencia en el desarrollo integral de productos, coordinación 
+  con proveedores, seguimiento de producción y articulación con distintos actores del proceso productivo. 
+  Como docente universitaria, acompaña procesos de aprendizaje y proyectos de diseño, promoviendo una mirada integral 
+  que articula creatividad, innovación, factibilidad técnica y necesidades de los usuarios.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Diseño Textil, Emprendimiento·
+    <strong>Rubro:</strong> Académico e Investigación·
+    <strong>Empresa/Institución:</strong> UNLa.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+            <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Raquel Landenberg.jpg" alt="Raquel Landenberg" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:raquel.landenberg@unc.edu.ar"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/raquel-landenberg-3231a4141?originalSubdomain=ar"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Cordoba"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Córdoba - Córdoba  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Mg. Arq. Raquel Landenberg</h3>
+<p>
+  Kinetic Design nace en 2019 en Córdoba, Argentina, de la mano de la arquitecta Raquel Landenberg, 
+  con una búsqueda clara: crear piezas de iluminación que trasciendan lo decorativo para convertirse en experiencias. 
+  Desde sus primeros años de formación, Raquel entró en contacto con el diseño paramétrico, un lenguaje contemporáneo 
+  inspirado en los patrones de la naturaleza y potenciado por herramientas digitales. Fascinada por su potencial, decidió 
+  llevar ese universo a un objeto cotidiano: la lámpara. Así comenzó a gestarse una idea que con el tiempo se transformaría 
+  en una marca. En sus inicios, el proyecto se llamó Kinetic Deco, integrando una colección más amplia de objetos. 
+  Sin embargo, a medida que la propuesta fue madurando —y luego de atravesar distintos procesos de incubación y mentorías 
+  en áreas como estrategia, comunicación y negocios— el camino se volvió más claro: enfocarse en el diseño y la fabricación 
+  de lámparas como pieza central. Así nació Kinetic Design. Desde entonces, la marca desarrolla lámparas de diseño 
+  paramétrico que combinan precisión digital y trabajo artesanal en un mismo objeto. Cada pieza está inspirada en 
+  geometrías presentes en la naturaleza y pensada no solo para iluminar, sino para transformar los espacios, generando 
+  atmósferas de calma, calidez y sofisticación a través de la luz. Uno de los diferenciales clave de Kinetic Design es 
+  su propuesta participativa: las lámparas se entregan en formato kit para armar. De esta manera, quien la adquiere no es 
+  solo un usuario, sino parte del proceso. El armado manual conecta con la lógica del do it yourself y la cultura maker, 
+  transformando la compra en una experiencia. El proyecto creció también con el aporte de su cofundador, economista, 
+  quien sumó una mirada estratégica y de gestión, consolidando el desarrollo de la marca. Hoy, todas las colecciones 
+  son diseñadas por Raquel Landenberg, y han sido reconocidas en diversas oportunidades con el Sello de Buen Diseño Argentino, 
+  destacando su innovación, calidad y valor diferencial. Kinetic Design trabaja con materiales sustentables y una lógica de 
+  producción consciente, reafirmando su compromiso con el diseño responsable. Desde Córdoba hacia el país y el mundo, la 
+  marca continúa evolucionando con una misma premisa: explorar el potencial del diseño paramétrico para crear objetos que
+   no solo se ven, sino que se viven. Diseño de Productos / Mobiliario, Sustentabilidad y Materiales, Modelado 3D y 
+   Fabricación Digital, Ergonomía, Identidad Corporativa / Branding, Diseño UX/UI y Digital, Diseño de Luminarias, 
+   Emprendimiento
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +15 años ·
+    <strong>Especialidad:</strong> Diseño paramétrico·
+    <strong>Rubro:</strong> Diseño de Productos / Fabricación Digital / Ergonomía·
+    <strong>Empresa/Institución:</strong> KINETIC DESIGN.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+            <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/malena pasin.jpg" alt="Malena Pasin" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:malena.pasin@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/malena-pasin-868a6820/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Florida"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Florida - Buenos Aires  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Esp. DI Malena Pasin</h3>
+<p>
+ Diseñadora Industrial de la UBA y Esp. en Metodología de la Investigación Científica (UNLa). 
+ Al día de la fecha, dirije el Centro de investigación en Diseño, Proyecto y Desarrollo y enseño en Ciclo Básico Común, 
+ grado y posgrado, con cátedras a cargo – y también en equipos de trabajo- en UBA/FADU, UNR/FAPyD y UNM/Depto de CAyT. 
+ En UNR, participa en la Lic. de DI en “Introducción al Pensamiento Científico” y “Diseño y Cultura Alimentaria”.  
+ Es integrante de la Red Latinoamericana de Diseño y Alimentos, desde donde comencó a interesarse en las experiencias 
+ alimentarias y su relación con el diseño. Participa habitualmente de eventos científico/académicos y ha publicado 
+ artículos y capítulos de libro de forma colectiva o individualmente en varias oportunidades.  Actualmente, 
+ además de los espacios académicos, es mentora y asesora en Metodología del proyecto.  
+ Malena.pasin@metodo_uba | @dyca.unr | metodo-uba.vercel.app |  
+ https://www.fadu.uba.ar/sedes-de-investigacion-sec-de-investigacion/
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +20 años ·
+    <strong>Especialidad:</strong> Diseño y Alimentos·
+    <strong>Rubro:</strong> Academico e Investigación·
+    <strong>Empresa/Institución:</strong> UBA - UNR.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+            <article class="course-item">
+   <span class="profile-tag">DyCV</span>
+            <div>
+              <img src="assets/images/FOTOS/betsabe.png" alt="Betsabé Sensottera" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:bsensottera@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/betsabesensottera/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Remedios+de+Escalada"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Remedios de Escalada </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Esp. DyCV Betsabé Sensottera</h3>
+<p>
+  Licenciada en Diseño y Comunicación visual UNLa. Actualmente trabaja profesionalmente en Diseño UX, en el Gobierno de la Ciudad de Buenos Aires como UX/UI Designer, 
+  cuenta con experiencia en empresas fintech como Banco ICBC Argentina, y en healthtech como Nations Benefits, 
+  enfocándose en ecommerce. Previamente, se desempeñó en marketing online para diversas empresas y agencias de publicidad.  
+  Ademnás, es Licenciada en Diseño y Comunicación Visual y actualmente cursa una Maestría en Diseño Comunicacional en UBA. 
+  Asimismo, es Editora de la Universidad de Buenos Aires, en donde ejerce como jefa de trabajos prácticos en la materia 
+  Informática Aplicada a la Producción de Impresos.
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Diseño UX/UI y Digital·
+    <strong>Rubro:</strong> Diseño Editorial y Diseño Digital·
+    <strong>Empresa/Institución:</strong> Gobierno de la Ciudad de Buenos Aires - Secretaría de Innovación y Transformación Digital.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+            <article class="course-item">
+   <span class="profile-tag">DyCV</span>
+            <div>
+              <img src="assets/images/FOTOS/tomat.png" alt="Mariana Tornaquíndici " />
+             
+<div class="course-social-links">
+
+  <a href="mailto:holatallermaiz@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://instagram.com/maizprintmaker/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Avellaneda"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Avellaneda  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. Pla. Mariana Tornaquíndici </h3>
+<p>
+  Licenciada en Artes Plásticas con orientación en Grabado y Arte Impreso (UNLP) y Maquinista Impresora 
+  Flexográfica (Fundación Gutenberg). Trabaja con fotopolímero desde 2015, en una práctica de fotograbado que 
+  funciona como puerta de entrada a materiales y lógicas tomadas de la industria, que junto al photoplate 
+  (tomados de la flexografía y offset respectivamente) amplían la capacidad de definición de tramados y de 
+  reproductibilidad de la imagen, aplicadas a la impresión manual. Desde 2024 coordina el Intensivo de Sellos en la 
+  Secretaría de Extensión de la Facultad de Artes, UNLP. Su propuesta está dirigida a jóvenes y adultxs que quieran 
+  comunicar a través de la imagen impresa y el sello como dispositivo gráfico, desde el seguimiento de su proyecto o 
+  autoedición personal. El contacto directo con lo impreso es el punto de partida, incorporando antecedentes, referentes, 
+  conceptos introductorios sobre lenguaje visual y material teórico-técnico acorde a las necesidades de los materiales 
+  fotosensibles. Identidad Corporativa / Branding, Tipografía, Diseño Editorial, Ilustración / Animación, 
+  Diseño de Accesorios, Emprendimiento, 
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Impresión con fotopolímero, fotograbado y arte impreso·
+    <strong>Rubro:</strong> Comunicación Visual·
+    <strong>Empresa/Institución:</strong> Maiz Print maker.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/ema gomez auad.png" alt="Emanuel Gomez Auad" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:egomezauad@hotmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/emanuel-gomez-auad-224a151a/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Lavallol"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Lavallol  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Emanuel Gomez Auad</h3>
+<p>
+  Licenciado en Diseño Industrial UNLa. Experiencia en Diseño y desarrollo de Packaging de medicamentos y cosmética. 
+  Coordinación de equipos de Diseño. Liderazgo de proyectos de mejora y eficiencia. 
+  Transferencia tecnológica con proveedores y fabricantes terceros.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +10 años ·
+    <strong>Especialidad:</strong> Diseño de Envases ·
+    <strong>Rubro:</strong> Farmaceutico - Laboratorios ·
+    <strong>Empresa/Institución:</strong> Laboratorios Andrómaco.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/florencia.jpeg" alt="Florencia Araya" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:magaliflorencia.fma@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/florenciaarayaa?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Burzaco"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Burzaco  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Florencia Araya</h3>
+<p>
+  Diseñadora industrial UNLa, orientada a producción, especializada en transformar ideas en productos fabricables. 
+  Trabaja en el desarrollo de despieces técnicos, viabilidad productiva e instructivos de armado, con foco en
+   mejorar la eficiencia y reducir errores en planta. Le interesa la organización de la información técnica y 
+   la optimización de procesos, especialmente en la integración entre diseño, producción y gestión de stock.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> POP, Gestion del Diseño, Gestion de produccion·
+    <strong>Rubro:</strong> Industria·
+    <strong>Empresa/Institución:</strong> MODULOS AARGENTINOS.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Carlos acosta.jpeg" alt="Carlos Acosta" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:caa_acosta@hotmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  
+
+  <a href="https://linkedin.com/in/liccarlosacosta"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Jose+Marmol"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>José Marmol </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Carlos Acosta</h3>
+<p>
+  Profesional en Diseño Industrial con más de 15 años de experiencia en gestión industrial, desarrollo de productos y 
+  optimización de procesos en Argentina y Estados Unidos. Especializado en dirección de operaciones, mejora continua e 
+  industrialización, con foco en aumentar la productividad, optimizar costos y fortalecer la gestión organizacional 
+  mediante la integración de personas, procesos y tecnología. Graduado UNLa.
+  Comprometido con altos estándares de desempeño y logro de objetivos.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +10 años ·
+    <strong>Especialidad:</strong> POP, Diseño de unidades productivas
+    <strong>Rubro:</strong> Diseño POP                            ·
+    <strong>Empresa/Institución:</strong> Peope Group
+  </p>
+</div>
+</div>   
+
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Jesi Arias.jpeg" alt="Jesica Arias" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:ariasjesicabrenda@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/jesicabarias/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Longchamps"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Longchamps  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Jésica Arias</h3>
+<p>
+  Diseñadora Industrial orientada al desarrollo de soluciones, innovación y mejora de experiencias. 
+  Su experiencia combina diseño, análisis de procesos y participación en proyectos de transformación digital, 
+  trabajando en la definición de requerimientos, mapeo de flujos, validación funcional y mejora continua de productos 
+  y/o servicios digitales.  Su formación le permite abordar desafíos desde una visión sistémica, combinando pensamiento de 
+  diseño, análisis de procesos y enfoque centrado en las personas. 
+  Complementa este perfil con estudios en Ciencia de Datos, incorporando herramientas para el análisis de información y 
+  la toma de decisiones basada en evidencia.  Busca participar en iniciativas interdisciplinarias que impulsen la innovación, 
+  desarrollo de productos y servicios con impacto.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +2 años ·
+    <strong>Especialidad:</strong> Diseño IU/UX·
+    <strong>Rubro:</strong> Diseño Digital·
+    <strong>Empresa/Institución:</strong> Provincia NET.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/male olivieri.png" alt="Malena Olivieri" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:malena.olivieri@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/malena-olivieri-651801199/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Lomas+de+Zamora"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Lomas de Zamora  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Malena Olivieri</h3>
+<p>
+  Con más de cinco años de experiencia en chapa plegada y procesos metalúrgicos, se especializa en 
+  el desarrollo de piezas, el seguimiento integral de la producción y el diseño de etiquetas y embalajes. 
+  Complementa mi trabajo industrial con la docencia en escuelas técnicas estatales.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Desarrollo de Piezas·
+    <strong>Rubro:</strong> Industria Metalúrgica·
+    <strong>Empresa/Institución:</strong> Trox Argentina .
+  </p>
+</div>
+</div>
+            
+          </article>
+
+             <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/adrian diaz.png" alt="Adrián Díaz" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:adriandiaz34303@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.instagram.com/adriancad_design/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Claypole"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Claypole  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Adrían Díaz</h3>
+<p>
+  Licenciado en Diseño Industrial UNLa, Se dedica al diseño de máquinas, desde visita a clientes y/o lectura de 
+  pliegos de clientes, diseño y modelados 3D, planos para fabricación y seguimiento del proyecto.
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Diseño de Máquinas·
+    <strong>Rubro:</strong> Industria·
+    <strong>Empresa/Institución:</strong> Adriancad_design.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/ailin garcia.png" alt="Ailín García" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:ailin.artetextil@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.instagram.com/calzada_sublimados/"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Rafael+Calzada"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Rafael Calzada  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Ailín García</h3>
+<p>
+  Diseñadora industrial con orientacion textil e indumentaria. Estudiante de escenografia y vestuario escenico, 
+  fué docente de bordado y asistente de realizacion de vestuario y sombreros para el teatro colón y centros culturales. 
+  Participa en la organizacion de emprendimientos de producción local en el partido de alte brown y trabaja en el area de 
+  diseño de producto en caba para la ind textil. En el ultimo año de su carrera realizó las fichas tecnicas para confeccionar 
+  los ambos de la carrera de enfermeria de la UNLA
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +5 años ·
+    <strong>Especialidad:</strong> Estampado Textil y Sublimado·
+    <strong>Rubro:</strong> Diseño Textil, Estampado textil·
+    <strong>Empresa/Institución:</strong> Calzada Sublimados.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+
+             <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/Juan Pablo Junco.png" alt="Juan Pablo Junco" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:Jjuncodesign@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.behance.net/JuncoDesign"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fa-brands fa-behance"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Quilmes"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Quilmes  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">Lic. DI Juan Pablo Junco</h3>
+<p>
+  Diseñador industrial UNLa orientado al desarrollo y experimentación en el ámbito de la competición automotriz. 
+  Su interés se centra en la práctica directa: fabricación, resolución constructiva, puesta a punto y mejora 
+  continua de vehículos, integrando criterios de diseño e ingeniería. Busca involucrarse en entornos donde el 
+  aprendizaje técnico y la experiencia aplicada permitan comprender el comportamiento real de los sistemas mecánicos. 
+  Actualmente desarrolla proyectos propios como Munay, un Gran Turismo conceptual argentino, como horizonte de evolución 
+  profesional. Le interesa formar parte de iniciativas que vinculen diseño, producción y rendimiento, aportando una mirada 
+  crítica, técnica y orientada a resultados.
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +2 años ·
+    <strong>Especialidad:</strong> Diseño de Vehículos·
+    <strong>Rubro:</strong> Diseño Automotriz·
+    <strong>Empresa/Institución:</strong> .
+  </p>
+</div>
+</div>
+            
+          </article>
+
+        
+
+          <article class="course-item">
+   <span class="profile-tag">DI</span>
+            <div>
+              <img src="assets/images/FOTOS/ch ullmann 19 x @sahferreira - christian ullmann.jpg" alt="Christian Ullmann" />
+             
+<div class="course-social-links">
+
+  <a href="mailto:christianullmann365@gmail.com"
+     class="course-social-link"
+     aria-label="Correo electrónico">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/resudaca"
+     target="_blank"
+     class="course-social-link"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://maps.google.com/?q=Lomas+de+Zamora"
+   target="_blank"
+   class="course-social-link location-link">
+  <i class="fas fa-location-dot"></i>
+  <span>Lomas de Zamora  </span>
+</a>
+
+</div>
+
+            </div>         
+
+            <div>
+            <h3 class="course-item-title">DI Christian Ullmann</h3>
+<p>
+  Diseñador industrial FADU–UBA, vivió los últimos 25 anos en San Pablo, trabaja con diseño exploratorio, 
+  estratégico y consultoria en diseño para la innovación social y nuevos ecosistemas .coordinador de projectos 
+  para empresas e instituiciones en Brasil y Latino América, sus productos y projectos recibierom premios en Itália, 
+  Espana, Brasil y Argentina .Desarrolló proyectos académicos/seminarios en México, Colombia, Ecuador, Perú, Brasil, Chile, 
+  Argentina, Países Bajos, Italia y España   .Sus área de mayor interés son los desafíos sociales y ambientales, que desde el 
+  año 2000 fueron redefinidos como desarrollo sostenible; en la tercera década del siglo XXI reorganiza sus ideas y se propone
+   actuar en el area del diseño para la innovación social dentro de un contexto de economia creativa para un sistema de 
+   economia circular .la iA me define como un diseñador industrial/investigador en diseño de transición, no soy todo eso 
+   lo dejamos en diseñador de transición y ya está de buen tamaño.
+   Gestion del Diseño, Diseño de Productos / Mobiliario, Sustentabilidad y Materiales, 
+   Gestión Estratégica / Diseño de Servicios, Diseño de materiales, Diseño de Accesorios, 
+   Diseño de Luminarias, Asesoramiento o Consultoría
+  
+</p>
+
+<div class="expert-data">
+  <p>
+    <strong>Experiencia:</strong> +20 años ·
+    <strong>Especialidad:</strong> Gestion del Diseño, Gestion de produccion, Asesoria·
+    <strong>Rubro:</strong> Industria·
+    <strong>Empresa/Institución:</strong> Projeto oficina nomade.
+  </p>
+</div>
+</div>
+            
+          </article>
+
+
+
+          <div id="expertsNoResults" class="experts-no-results">
+  <i class="fas fa-user-slash"></i>
+  <p>No se encontraron expertos con esos criterios.</p>
+</div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/components.js?v=2"></script>
+
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const searchInput = document.getElementById("expertSearch");
+  const categorySelect = document.getElementById("expertCategory");
+  const searchButton = document.getElementById("searchExperts");
+  const clearButton = document.getElementById("clearExpertFilters");
+  const resultsText = document.getElementById("expertResults");
+  const noResults = document.getElementById("expertsNoResults");
+
+  const expertCards = Array.from(
+    document.querySelectorAll("article.course-item")
+  );
+
+  function normalizeText(text) {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function filterExperts() {
+
+    const searchTerms = normalizeText(searchInput.value)
+      .split(" ")
+      .filter(Boolean);
+
+    const selectedCategory = normalizeText(categorySelect.value);
+
+    let visibleExperts = 0;
+
+    expertCards.forEach(function (card) {
+
+      const profileTag = card.querySelector(".profile-tag");
+      const expertData = card.querySelector(".expert-data");
+      const expertName = card.querySelector(".course-item-title");
+
+      const searchableText = normalizeText(
+        [
+          profileTag ? profileTag.textContent : "",
+          expertName ? expertName.textContent : "",
+          expertData ? expertData.textContent : ""
+        ].join(" ")
+      );
+
+      const cardCategory = normalizeText(
+        profileTag ? profileTag.textContent : ""
+      );
+
+      const matchesSearch = searchTerms.every(function (term) {
+        return searchableText.includes(term);
+      });
+
+      const matchesCategory =
+        !selectedCategory || cardCategory === selectedCategory;
+
+      const shouldShow = matchesSearch && matchesCategory;
+
+      card.classList.toggle("expert-hidden", !shouldShow);
+
+      if (shouldShow) {
+        visibleExperts++;
+      }
+
+    });
+
+    resultsText.textContent =
+      visibleExperts === 1
+        ? "1 experto encontrado"
+        : visibleExperts + " expertos encontrados";
+
+    if (noResults) {
+      noResults.style.display =
+        visibleExperts === 0 ? "block" : "none";
+    }
+  }
+
+  searchButton.addEventListener("click", filterExperts);
+
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      filterExperts();
+    }
+  });
+
+  clearButton.addEventListener("click", function () {
+    searchInput.value = "";
+    categorySelect.value = "";
+
+    expertCards.forEach(function(card){
+      card.classList.remove("expert-hidden");
+    });
+
+    resultsText.textContent =
+      expertCards.length === 1
+        ? "1 experto encontrado"
+        : expertCards.length + " expertos encontrados";
+
+    if (noResults) {
+      noResults.style.display = "none";
+    }
+
+    searchInput.focus();
+  });
+
+  resultsText.textContent =
+    expertCards.length === 1
+      ? "1 experto encontrado"
+      : expertCards.length + " expertos encontrados";
+
+});
+</script>
+
+</body>
+</html>

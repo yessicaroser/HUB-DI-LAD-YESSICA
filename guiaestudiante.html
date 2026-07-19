@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Guía del Estudiante — HUB DI LAD UNLa</title>
+  <meta name="description"
+    content="Recorrido autoguiado para preparar tu proyecto de diseño antes de la primera reunión con la incubadora." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Guía del Estudiante — HUB DI LAD UNLa" />
+  <meta property="og:description"
+    content="Recorrido autoguiado para preparar tu proyecto de diseño antes de la primera reunión con la incubadora." />
+  <meta property="og:image" content="https://hubdiunla.github.io/HUB-DI-LAD/assets/images/logohubteal.png" />
+  <meta property="og:url" content="https://hubdiunla.github.io/HUB-DI-LAD/guiaestudiante.html" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Guía del Estudiante — HUB DI LAD UNLa" />
+  <meta name="twitter:description"
+    content="Recorrido autoguiado para preparar tu proyecto de diseño antes de la primera reunión con la incubadora." />
+  <meta name="twitter:image" content="https://hubdiunla.github.io/HUB-DI-LAD/assets/images/logohubteal.png" />
+
+  <link rel="icon" href="assets/images/favicomhubnew.ico" type="image/x-icon" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script src="js/tailwind.config.js?v=1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="css/reset.css?v=1" />
+  <link rel="stylesheet" href="css/variables.css?v=1" />
+  <link rel="stylesheet" href="css/style.css?v=1" />
+
+  <!-- Estilos propios de la Guía del Estudiante (tokens y componentes específicos de esta página) -->
+  <link rel="stylesheet" href="css/guiaestudiante.css?v=1" />
+</head>
+
+<body>
+  <div id="navbar"></div>
+
+  <div id="guia" class="page-main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero">
+      <span class="badge">Recorrido autoguiado</span>
+      <h1 class="hero-title">Guía del<br>Estudiante</h1>
+      <p>Esta guía te acompaña a preparar tu proyecto de diseño <strong>antes</strong> de la primera reunión con la
+        incubadora. Tocá un número para abrir ese módulo: vas a encontrar contenido, planillas y cuestionarios para
+        autoevaluarte.</p>
+      <p class="small">Todo lo que completés acá queda en tu navegador mientras dure la sesión — copiá o capturá lo que
+        quieras conservar antes de cerrar la página.</p>
+    </section>
+
+    <!-- ═══════════════ LAYOUT: RAIL + ACORDEÓN ═══════════════ -->
+    <div class="layout">
+      <aside class="rail" id="rail">
+        <div class="mobile-progress" id="mobileProgress">
+          <div class="mp-label">
+            <span id="mpStep">05 módulos</span>
+            <span id="mpTitle">Tocá un módulo para empezar</span>
+          </div>
+          <div class="mp-bar" id="mpBar">
+            <span class="mp-seg" data-i="0"></span>
+            <span class="mp-seg" data-i="1"></span>
+            <span class="mp-seg" data-i="2"></span>
+            <span class="mp-seg" data-i="3"></span>
+            <span class="mp-seg" data-i="4"></span>
+          </div>
+        </div>
+        <button class="rail-item" data-m="0" onclick="toggleModule(0)"><span class="rail-num">01</span></button>
+        <span class="rail-line"></span>
+        <button class="rail-item" data-m="1" onclick="toggleModule(1)"><span class="rail-num">02</span></button>
+        <span class="rail-line"></span>
+        <button class="rail-item" data-m="2" onclick="toggleModule(2)"><span class="rail-num">03</span></button>
+        <span class="rail-line"></span>
+        <button class="rail-item" data-m="3" onclick="toggleModule(3)"><span class="rail-num">04</span></button>
+        <span class="rail-line"></span>
+        <button class="rail-item" data-m="4" onclick="toggleModule(4)"><span class="rail-num">05</span></button>
+      </aside>
+
+      <main class="main-col">
+
+        <!-- ═══════════════════════════════════════ MÓDULO 01 ═══════════════════════════════════════ -->
+        <section class="acc-mod" id="m1" data-m="0">
+          <div class="acc-mod-head" onclick="toggleModule(0)">
+            <div class="left">
+              <span class="num">01</span>
+              <div>
+                <h2>¿Tengo un proyecto incubable?</h2>
+                <p class="sub">Exploración del proyecto · PPP/TIF/Emprendimiento · Checklist · Ficha inicial</p>
+              </div>
+            </div>
+            <span class="chev">⌄</span>
+          </div>
+          <div class="acc-mod-body">
+
+            <div class="guia-block">
+              <p class="block-title">Preguntas y respuestas</p>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Qué significa incubar un proyecto
+                    de
+                    diseño?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Incubar es recibir acompañamiento estructurado durante un tiempo definido:
+                  mentorías, herramientas y contactos para que tu proyecto pase de idea a algo probado y presentable. No
+                  es solo "recibir un consejo": es un proceso con etapas.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Mi idea tiene potencial
+                    real?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Una idea tiene potencial cuando podés nombrar con claridad qué problema resuelve,
+                  para quién y por qué sería mejor que las alternativas que ya existen. Si todavía no podés responder
+                  eso,
+                  no significa que la idea esté mal — significa que falta afinarla, y para eso está este módulo.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿En qué etapa está mi
+                    proyecto?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">En general se distinguen tres momentos: <strong>exploración</strong> (todavía es
+                  una
+                  idea, sin validar), <strong>desarrollo</strong> (ya tenés bocetos, prototipos o primeras pruebas) y
+                  <strong>transición</strong> (el proyecto está listo para salir del ámbito académico). El test de abajo
+                  te ayuda a ubicarte.
+                </div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Qué diferencia hay entre PPP, TIF y
+                    proyecto de incubación?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">La PPP y el TIF son instancias académicas obligatorias de tu carrera, con
+                  requisitos
+                  de cátedra. Un proyecto de incubación puede nacer de cualquiera de las dos, pero sigue un camino
+                  propio
+                  dentro del HUB, con sus propios tiempos y objetivos — podés incubar un TIF, pero no todo TIF necesita
+                  pasar por la incubadora.</div>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">¿PPP, TIF, proyecto o emprendimiento?</p>
+              <p style="font-size:12px;color:#444;margin-bottom:14px">No son cuatro categorías del mismo tipo: la PPP y
+                el
+                TIF son de dónde <strong>viene</strong> tu proyecto; "proyecto de incubación" es el camino que elige
+                seguir dentro del HUB; y "emprendimiento" es uno de los posibles <strong>destinos</strong> de ese camino
+                (uno de los 6 modelos que vas a ver en el módulo 02).</p>
+              <div class="cmp-table-wrap">
+                <table class="cmp-table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>PPP Institucional</th>
+                      <th>PPP Personal</th>
+                      <th>TIF</th>
+                      <th>Proyecto de incubación</th>
+                      <th>Emprendimiento</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Qué es</td>
+                      <td>Práctica que responde a una demanda interna de la UNLa</td>
+                      <td>Práctica que nace de una necesidad personal, laboral o territorial</td>
+                      <td>Trabajo final de carrera</td>
+                      <td>Cualquier PPP o TIF que sigue camino propio en el HUB</td>
+                      <td>Uno de los 6 modelos de incubación (el de base empresarial)</td>
+                    </tr>
+                    <tr>
+                      <td>Origen</td>
+                      <td>Demanda del Depto. de Humanidades y Artes o la Universidad</td>
+                      <td>Inquietud propia del estudiante o equipo</td>
+                      <td>Instancia obligatoria de cierre de carrera</td>
+                      <td>Nace de una PPP o un TIF</td>
+                      <td>Se elige dentro de la incubación, no es un punto de partida</td>
+                    </tr>
+                    <tr>
+                      <td>Plazo</td>
+                      <td>Hasta 12 meses</td>
+                      <td>Variable, según el proyecto</td>
+                      <td>El de la cursada del TIF</td>
+                      <td>El que defina el HUB según el modelo elegido</td>
+                      <td>El que demande formalizar la empresa/cooperativa</td>
+                    </tr>
+                    <tr>
+                      <td>A dónde va</td>
+                      <td>Resuelve el problema institucional y termina ahí</td>
+                      <td>Puede escalar a un proyecto de incubación</td>
+                      <td>Puede escalar a un proyecto de incubación</td>
+                      <td>Puede derivar en cualquiera de los 6 modelos, incluido Emprendimiento</td>
+                      <td>Es un destino: no deriva en otra instancia</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="note">PPP y TIF son de dónde viene tu proyecto. Proyecto de incubación es el camino que elige
+                seguir dentro del HUB. Emprendimiento es uno de los posibles destinos de ese camino.</p>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Herramienta: autoevaluación</p>
+              <div class="tool-tabs">
+                <button class="ttab on">Checklist de características</button>
+                <button class="ttab">Test de percepción</button>
+              </div>
+
+              <div class="tscreen on" id="m1-0">
+                <p style="font-size:12px;color:#444;margin-bottom:4px">Estos puntos se leen en conjunto, no de forma
+                  aislada: no es una checklist de sí/no que aprueba o descarta un proyecto, sino una guía para
+                  identificar
+                  qué dimensiones ya tenés resueltas y cuáles todavía necesitan trabajo.</p>
+                <p style="font-size:12px;color:#444;margin-bottom:14px">Para cada característica, marcá el estado actual
+                  de tu proyecto.</p>
+                <div id="m1-checklist"></div>
+                <div class="total-line"><span class="tl">Estado del diagnóstico</span><span class="tv"
+                    id="m1-chk-total">Sin completar</span></div>
+              </div>
+
+              <div class="tscreen" id="m1-1">
+                <p style="font-size:12.5px;color:#444;margin-bottom:14px">Respondé las 5 preguntas para tener una
+                  primera
+                  lectura de si tu idea está lista para avanzar. Es una mirada más intuitiva — se complementa con el
+                  checklist, no lo reemplaza.</p>
+                <div id="m1-quiz"></div>
+                <div id="m1-result"></div>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Herramienta: ficha de idea inicial</p>
+              <div class="fgroup">
+                <label class="flabel">Nombre tentativo del proyecto</label>
+                <input type="text" id="f1-nombre" placeholder="Ej: Mobiliario modular para espacios reducidos">
+              </div>
+              <div class="fgroup">
+                <label class="flabel">Descripción en menos de 3 líneas</label>
+                <textarea id="f1-desc" rows="3" placeholder="¿Qué es y qué resuelve?"></textarea>
+              </div>
+              <div class="fgroup">
+                <label class="flabel">Problema que resuelve</label>
+                <textarea id="f1-prob" rows="2"></textarea>
+              </div>
+            </div>
+
+            <div class="guia-block" id="ent-m0">
+              <p class="block-title">Entregables de este módulo</p>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Checklist de características
+                  completado</span></div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Test de percepción
+                  completado</span></div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Ficha de idea inicial</span>
+              </div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Decisión: continúo al módulo
+                  2</span></div>
+              <button class="btn ghost sm dl-btn" id="dl-0" disabled onclick="downloadModulePDF(0)"
+                style="margin-top:14px">Descargar PDF</button>
+              <p class="note" id="dl-hint-0">Completá los 4 casilleros para habilitar la descarga.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════ MÓDULO 02 ═══════════════════════════════════════ -->
+        <section class="acc-mod" id="m2" data-m="1">
+          <div class="acc-mod-head" onclick="toggleModule(1)">
+            <div class="left">
+              <span class="num">02</span>
+              <div>
+                <h2>¿A qué modelo pertenece tu proyecto?</h2>
+                <p class="sub">Elegí tu camino · Árbol de decisión · 6 modelos · Inicial vs. avanzado</p>
+              </div>
+            </div>
+            <span class="chev">⌄</span>
+          </div>
+          <div class="acc-mod-body">
+
+            <div class="guia-block">
+              <p class="block-title">Preguntas y respuestas</p>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Qué diferencia hay entre modelos
+                    iniciales y avanzados?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Los modelos iniciales (Concurso, Convocatorias, Código abierto) están pensados
+                  para
+                  proyectos que recién arrancan y todavía necesitan definirse. Los avanzados (Emprendimiento, Llave en
+                  mano, Lanzamiento) suponen una propuesta ya validada, con foco en salir al mercado o escalar.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Puedo cambiar de modelo durante el
+                    proceso?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Sí, es normal — a medida que tu proyecto avanza puede quedarte chico el modelo
+                  inicial, o darte cuenta de que necesitás otro enfoque. Lo ideal es revisarlo antes de avanzar al
+                  módulo
+                  04, porque a partir de ahí el recorrido se vuelve más específico del modelo elegido.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Qué pasa si todavía no encontré
+                    convocatoria?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">No hace falta tener una convocatoria para empezar a incubar: podés avanzar igual
+                  con
+                  el modelo de Código abierto o Concurso, y buscar financiamiento más adelante. El módulo 05 —
+                  Ecosistema
+                  de recursos te va a ayudar a identificar opciones cuando llegue el momento.</div>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Herramienta: árbol de decisión</p>
+              <p style="font-size:12.5px;color:#444;margin-bottom:14px">Respondé estas preguntas y te sugerimos un
+                modelo
+                de partida. Después podés comparar los 6.</p>
+              <div id="m2-quiz"></div>
+              <div id="m2-result"></div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Los 6 modelos de incubación</p>
+              <p style="font-size:11.5px;color:#444;margin-bottom:12px">Tocá una tarjeta para marcarla como tu elección
+                definitiva.</p>
+              <div class="grid2" id="m2-models" style="gap:10px"></div>
+              <p class="note" id="m2-selected-note">Todavía no elegiste ningún modelo.</p>
+              <div class="fgroup" style="margin-top:14px">
+                <label class="flabel">Justificación de la elección</label>
+                <textarea id="m2-justificacion" rows="3"
+                  placeholder="¿Por qué este modelo es el más adecuado para tu proyecto ahora?"></textarea>
+              </div>
+              <p class="note">¿Todavía no encontraste convocatoria? Revisá el módulo 05 — Ecosistema de recursos.</p>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">¿Puedo cambiar de modelo?</p>
+              <p style="font-size:12.5px">Sí, pero hay un momento clave: podés revisarlo hasta completar este módulo. A
+                partir del módulo 04 el recorrido es específico del modelo elegido.</p>
+            </div>
+
+            <div class="guia-block" id="ent-m1">
+              <p class="block-title">Entregables de este módulo</p>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Modelo de incubación
+                  seleccionado</span></div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Justificación de la
+                  elección</span></div>
+              <button class="btn ghost sm dl-btn" id="dl-1" disabled onclick="downloadModulePDF(1)"
+                style="margin-top:14px">Descargar PDF</button>
+              <p class="note" id="dl-hint-1">Completá los 2 casilleros para habilitar la descarga.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════ MÓDULO 03 ═══════════════════════════════════════ -->
+        <section class="acc-mod" id="m3" data-m="2">
+          <div class="acc-mod-head" onclick="toggleModule(2)">
+            <div class="left">
+              <span class="num">03</span>
+              <div>
+                <h2>Armá tu propuesta</h2>
+                <p class="sub">Herramientas de propuesta · Canvas · Formulario · Rúbrica · Pitch</p>
+              </div>
+            </div>
+            <span class="chev">⌄</span>
+          </div>
+          <div class="acc-mod-body">
+
+            <div class="guia-block">
+              <p class="block-title">Preguntas y respuestas</p>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Cómo estructuro mi propuesta de
+                    valor?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Ordenala en 3 partes simples: el problema que ves, la solución que proponés y por
+                  qué tu forma de resolverlo es distinta a lo que ya existe. Si podés escribir eso en una sola frase, ya
+                  tenés la base de tu propuesta.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Qué espera ver el evaluador en mi
+                    formulario?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Claridad antes que perfección: que se entienda el problema, quién lo sufre, y qué
+                  tan avanzado está tu proyecto. Un formulario prolijo y concreto suma más que uno ambicioso pero
+                  confuso.
+                </div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Cómo preparo el pitch de 3 a 5
+                    minutos?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Practicalo en voz alta con tiempo cronometrado, no solo leído. Un pitch efectivo
+                  prioriza que la persona entienda el problema y se quede con una idea clara, por encima de mostrar
+                  todos
+                  los detalles técnicos del proyecto.</div>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Herramientas</p>
+              <div class="tool-tabs">
+                <button class="ttab on">Canvas</button>
+                <button class="ttab">Rúbrica</button>
+                <button class="ttab">Pitch</button>
+              </div>
+
+              <div class="tscreen on" id="m3-0">
+                <p style="font-size:12px;color:#444;margin-bottom:14px">Elegí la variante y completá cada bloque. El
+                  diseño se mantiene igual al descargar el PDF.</p>
+
+                <div class="bmc-switch">
+                  <button class="bmc-sw-btn on" id="bmc-sw-ppp" onclick="switchCanvas('ppp')">Adaptado a PPP</button>
+                  <button class="bmc-sw-btn" id="bmc-sw-tif" onclick="switchCanvas('tif')">Adaptado a TIF</button>
+                </div>
+
+                <!-- ═════ CANVAS ADAPTADO A PPP ═════ -->
+                <div class="bmc-panel on" id="bmc-panel-ppp">
+                  <div class="bmc-wrap">
+                    <div class="bmc-banner">Modelo de Proyecto — Adaptado a PPP</div>
+                    <div class="bmc-grid">
+                      <div class="bmc-block t5" style="grid-area:socios">
+                        <h4>Actores clave</h4>
+                        <p class="hint">¿Quién te acompaña o supervisa la práctica? Ej: tutor/a de la organización,
+                          docente de la cátedra, referentes del equipo.</p>
+                        <textarea id="bmc-ppp-actores" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t3" style="grid-area:actividades">
+                        <h4>Actividades de la práctica</h4>
+                        <p class="hint">¿Qué tareas vas a desarrollar dentro de la organización? Ej: relevamiento,
+                          diseño,
+                          entrega de piezas, seguimiento.</p>
+                        <textarea id="bmc-ppp-actividades" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t1" style="grid-area:recursos">
+                        <h4>Recursos clave</h4>
+                        <p class="hint">¿Qué necesitás para llevar adelante la práctica? Ej: acceso a la organización,
+                          herramientas, información interna.</p>
+                        <textarea id="bmc-ppp-recursos" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t2" style="grid-area:valor">
+                        <h4>Propuesta de valor para la organización</h4>
+                        <p class="hint">¿Qué problema resolvés o qué mejora aportás? Ej: optimización de un proceso,
+                          nueva
+                          pieza de diseño, protocolo.</p>
+                        <textarea id="bmc-ppp-valor" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t4" style="grid-area:relaciones">
+                        <h4>Vínculo con la organización</h4>
+                        <p class="hint">¿Cómo es el seguimiento y la comunicación durante la práctica? Ej: reuniones
+                          periódicas, informes de avance.</p>
+                        <textarea id="bmc-ppp-vinculo" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t3" style="grid-area:canales">
+                        <h4>Entrega y comunicación de resultados</h4>
+                        <p class="hint">¿Cómo vas a presentar o entregar lo trabajado? Ej: informe final, presentación,
+                          prototipo entregado.</p>
+                        <textarea id="bmc-ppp-entrega" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t5" style="grid-area:segmento">
+                        <h4>Destinatario dentro de la organización</h4>
+                        <p class="hint">¿A quién beneficia directamente tu trabajo? Ej: un área, un equipo, los usuarios
+                          finales de la organización.</p>
+                        <textarea id="bmc-ppp-destinatario" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t2" style="grid-area:costos">
+                        <h4>Recursos y tiempos de la práctica</h4>
+                        <p class="hint">¿Cuánto tiempo y qué recursos demanda? Ej: horas de práctica, materiales,
+                          traslados.</p>
+                        <textarea id="bmc-ppp-tiempos" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                      <div class="bmc-block t5" style="grid-area:ingresos">
+                        <h4>Resultado esperado de la práctica</h4>
+                        <p class="hint">¿Qué esperás lograr al finalizar? Ej: aprobación de la cátedra, informe validado
+                          por la organización, portfolio profesional.</p>
+                        <textarea id="bmc-ppp-resultado" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('ppp')"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn ghost sm" id="dlc-ppp" disabled onclick="downloadCanvasPDF('ppp')"
+                    style="margin-top:14px">Descargar PDF</button>
+                  <p class="note" id="dlc-hint-ppp">Completá los 9 bloques para habilitar la descarga.</p>
+                </div>
+
+                <!-- ═════ CANVAS ADAPTADO A TIF ═════ -->
+                <div class="bmc-panel" id="bmc-panel-tif">
+                  <div class="bmc-wrap">
+                    <div class="bmc-banner">Modelo de Proyecto — Adaptado a TIF</div>
+                    <div class="bmc-grid">
+                      <div class="bmc-block t5" style="grid-area:socios">
+                        <h4>Actores clave</h4>
+                        <p class="hint">¿Quién te acompaña o evalúa el proyecto? Ej: tutor, cátedra, incubadora, aliados
+                          externos.</p>
+                        <textarea id="bmc-tif-actores" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t3" style="grid-area:actividades">
+                        <h4>Actividades del proyecto</h4>
+                        <p class="hint">¿Qué etapas o tareas principales tiene tu proyecto? Ej: investigación,
+                          prototipado, testeo, redacción.</p>
+                        <textarea id="bmc-tif-actividades" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t1" style="grid-area:recursos">
+                        <h4>Recursos clave</h4>
+                        <p class="hint">¿Qué necesitás para desarrollarlo? Ej: materiales, software, conocimientos
+                          técnicos, tiempo.</p>
+                        <textarea id="bmc-tif-recursos" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t2" style="grid-area:valor">
+                        <h4>Propuesta de valor del proyecto</h4>
+                        <p class="hint">¿Qué problema resuelve y por qué es valioso? Ej: innovación, mejora de proceso,
+                          impacto social.</p>
+                        <textarea id="bmc-tif-propuesta" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t4" style="grid-area:relaciones">
+                        <h4>Validación con el usuario</h4>
+                        <p class="hint">¿Cómo comprobás que tu propuesta funciona? Ej: entrevistas, testeos,
+                          devoluciones
+                          de la cátedra.</p>
+                        <textarea id="bmc-tif-validacion" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t3" style="grid-area:canales">
+                        <h4>Difusión y comunicación</h4>
+                        <p class="hint">¿Cómo mostrás o compartís tu proyecto? Ej: defensa oral, exposición, portfolio,
+                          redes.</p>
+                        <textarea id="bmc-tif-difusion" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t5" style="grid-area:segmento">
+                        <h4>Usuario / destinatario</h4>
+                        <p class="hint">¿A quién está dirigido? Ej: comunidad, empresa, institución, público específico.
+                        </p>
+                        <textarea id="bmc-tif-usuario" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t2" style="grid-area:costos">
+                        <h4>Recursos y costos del proyecto</h4>
+                        <p class="hint">¿Qué inversión de tiempo, dinero o materiales requiere? Ej: horas de trabajo,
+                          insumos, impresión 3D.</p>
+                        <textarea id="bmc-tif-costos" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                      <div class="bmc-block t5" style="grid-area:ingresos">
+                        <h4>Resultados y evaluación esperada</h4>
+                        <p class="hint">¿Qué esperás lograr? Ej: aprobación académica, acreditación, incubación,
+                          portfolio
+                          profesional.</p>
+                        <textarea id="bmc-tif-resultados" placeholder="Escribí acá..."
+                          oninput="checkCanvasComplete('tif')"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn ghost sm" id="dlc-tif" disabled onclick="downloadCanvasPDF('tif')"
+                    style="margin-top:14px">Descargar PDF</button>
+                  <p class="note" id="dlc-hint-tif">Completá los 9 bloques para habilitar la descarga.</p>
+                </div>
+              </div>
+
+              <div class="tscreen" id="m3-1">
+                <p style="font-size:12px;color:#444;margin-bottom:12px">10 criterios. Para cada uno, elegí el nivel que
+                  mejor describe el estado actual de tu propuesta — cada opción tiene una referencia para que la
+                  autoevaluación no sea arbitraria.</p>
+                <div class="rub-legend">
+                  <span>1 · Incipiente</span>
+                  <span>2 · En desarrollo</span>
+                  <span>3 · Logrado</span>
+                  <span>4 · Destacado</span>
+                </div>
+                <div id="m3-rubrica"></div>
+                <div class="total-line"><span class="tl">Puntaje total</span><span class="tv" id="m3-total">0 /
+                    40</span>
+                </div>
+              </div>
+
+              <div class="tscreen" id="m3-2">
+                <p style="font-size:12px;color:#444;margin-bottom:12px">6 bloques con tiempo sugerido para tu pitch de 3
+                  a
+                  5 minutos.</p>
+                <div id="m3-pitch"></div>
+              </div>
+            </div>
+
+            <div class="guia-block" id="ent-m2">
+              <p class="block-title">Entregables de este módulo</p>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Canvas de propuesta de valor
+                  completado</span></div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Formulario de postulación
+                  (borrador)</span></div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Rúbrica de
+                  autoevaluación</span></div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Plantilla de pitch
+                  estructurada</span></div>
+              <button class="btn ghost sm dl-btn" id="dl-2" disabled onclick="downloadModulePDF(2)"
+                style="margin-top:14px">Descargar PDF</button>
+              <p class="note" id="dl-hint-2">Completá los 4 casilleros para habilitar la descarga.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════ MÓDULO 04 ═══════════════════════════════════════ -->
+        <section class="acc-mod" id="m4" data-m="3">
+          <div class="acc-mod-head" onclick="toggleModule(3)">
+            <div class="left">
+              <span class="num">04</span>
+              <div>
+                <h2>Planificá tu proyecto</h2>
+                <p class="sub">Gestión y viabilidad · Cronograma · Presupuesto · Triple impacto</p>
+              </div>
+            </div>
+            <span class="chev">⌄</span>
+          </div>
+          <div class="acc-mod-body">
+
+            <div class="guia-block">
+              <p class="block-title">Preguntas y respuestas</p>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Cómo construyo un cronograma
+                    realista?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Partí de hitos grandes (no de tareas diarias) y sumale siempre un margen extra a
+                  cada etapa — los proyectos reales casi nunca salen en el tiempo estimado a la primera. Es mejor un
+                  cronograma corto y cumplible que uno ambicioso que se atrasa desde la primera semana.</div>
+              </div>
+              <!--<div class="acc-item">
+              <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Cómo defino los roles del
+                  equipo?</span><span class="am">Ver respuesta</span></button>
+              <div class="acc-body">Usá la lógica RACI: para cada tarea importante, alguien es Responsable de hacerla,
+                alguien Aprueba el resultado, a quién hay que Consultar antes, y a quién solo hay que mantener
+                Informado. Evita que dos personas crean que la misma tarea es "del otro".</div>
+            </div>
+          -->
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Qué costos tengo que
+                    contemplar?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Además de materiales o insumos, pensá en costos que se olvidan fácil: tiempo
+                  propio,
+                  traslados, impresión de prototipos, herramientas o software. No todo tiene que salir de tu bolsillo —
+                  para eso están las fuentes de financiamiento del módulo 05.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Cómo demuestro impacto ante un
+                    evaluador?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">El impacto no es solo económico: también cuenta el impacto social (a quién
+                  beneficia) y el ambiental (qué recursos usa o ahorra). Mostrar las tres dimensiones, aunque sea de
+                  forma
+                  simple, da una imagen más sólida y honesta del proyecto.</div>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Herramientas</p>
+              <div class="tool-tabs">
+                <button class="ttab on">Cronograma</button>
+                <!--<button class="ttab">RACI</button>-->
+                <button class="ttab">Presupuesto</button>
+                <button class="ttab">Triple impacto</button>
+              </div>
+
+              <div class="tscreen on" id="m4-0">
+                <p class="row-head" style="grid-template-columns:2fr 1fr 1fr 24px">
+                  <span>Hito</span><span>Fecha</span><span>Responsable</span><span></span>
+                </p>
+                <div id="m4-cron"></div>
+                <button class="btn outline sm" onclick="addCronRow()">+ agregar hito</button>
+              </div>
+              <!--
+            <div class="tscreen" id="m4-1">
+              <p style="font-size:11.5px;color:#444;margin-bottom:10px">R = Responsable · A = Aprueba · C = Consulta · I
+                = Informado</p>
+              <p class="row-head" style="grid-template-columns:1.5fr 1fr 1fr 24px">
+                <span>Integrante</span><span>Tarea</span><span>Rol (R/A/C/I)</span><span></span>
+              </p>
+              <div id="m4-raci"></div>
+              <button class="btn outline sm" onclick="addRaciRow()">+ agregar fila</button>
+            </div>
+          -->
+              <div class="tscreen" id="m4-2">
+                <p class="row-head" style="grid-template-columns:2fr 1fr 1fr 24px">
+                  <span>Ítem</span><span>Monto</span><span>Fuente</span><span></span>
+                </p>
+                <div id="m4-pres"></div>
+                <button class="btn outline sm" onclick="addPresRow()" style="margin-bottom:14px">+ agregar ítem</button>
+                <div class="total-line"><span class="tl">Total</span><span class="tv" id="m4-total">$ 0</span></div>
+              </div>
+
+              <div class="tscreen" id="m4-3">
+                <div class="slider-box">
+                  <div class="sl-top"><span>Impacto social</span><span id="m4-soc-v">0</span></div>
+                  <input type="range" min="0" max="5" value="0" id="m4-soc" oninput="updImpacto()">
+                </div>
+                <div class="slider-box">
+                  <div class="sl-top"><span>Impacto ambiental</span><span id="m4-amb-v">0</span></div>
+                  <input type="range" min="0" max="5" value="0" id="m4-amb" oninput="updImpacto()">
+                </div>
+                <div class="slider-box">
+                  <div class="sl-top"><span>Impacto económico</span><span id="m4-eco-v">0</span></div>
+                  <input type="range" min="0" max="5" value="0" id="m4-eco" oninput="updImpacto()">
+                </div>
+                <div class="total-line"><span class="tl">Puntaje global</span><span class="tv" id="m4-imp-total">0 /
+                    15</span></div>
+                <p class="note" id="m4-imp-msg">Movés los sliders para estimar el impacto de tu proyecto en cada
+                  dimensión.</p>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Guías técnicas express</p>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">UX / UI</span><span
+                    class="am">Cuándo
+                    y cómo incorporarlo</span></button>
+                <div class="acc-body">Útil si tu proyecto tiene una interfaz digital (app, sitio, sistema). Mapeá el
+                  recorrido del usuario antes de diseñar pantallas.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">Inteligencia artificial</span><span
+                    class="am">Cuándo y cómo incorporarlo</span></button>
+                <div class="acc-body">Pensala como herramienta de apoyo (prototipado, investigación, generación de
+                  variantes), no como el centro del proyecto salvo que sea justamente eso.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">Modelado 3D</span><span
+                    class="am">Cuándo y cómo incorporarlo</span></button>
+                <div class="acc-body">Recomendado para validar forma y ergonomía antes de fabricar un prototipo físico.
+                </div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">Community / difusión</span><span
+                    class="am">Cuándo y cómo incorporarlo</span></button>
+                <div class="acc-body">Pensá desde temprano cómo vas a comunicar el proyecto: a quién le importa y dónde
+                  está esa comunidad.</div>
+              </div>
+            </div>
+
+            <div class="guia-block" id="ent-m3">
+              <p class="block-title">Entregables de este módulo</p>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Cronograma con hitos y
+                  fechas</span></div>
+              <!--<div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Matriz RACI del equipo</span>
+            </div>-->
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Presupuesto con
+                  fuentes</span>
+              </div>
+              <div class="chk-item" onclick="toggleChk(this)"><input type="checkbox"><span>Medición de triple
+                  impacto</span></div>
+              <button class="btn ghost sm dl-btn" id="dl-3" disabled onclick="downloadModulePDF(3)"
+                style="margin-top:14px">Descargar PDF</button>
+              <p class="note" id="dl-hint-3">Completá los 4 casilleros para habilitar la descarga.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════ MÓDULO 05 ═══════════════════════════════════════ -->
+        <section class="acc-mod" id="m5" data-m="4">
+          <div class="acc-mod-head" onclick="toggleModule(4)">
+            <div class="left">
+              <span class="num">05</span>
+              <div>
+                <h2>Conocé el ecosistema</h2>
+                <p class="sub">Ecosistema de recursos · Actores · Financiamiento · Glosario</p>
+              </div>
+            </div>
+            <span class="chev">⌄</span>
+          </div>
+          <div class="acc-mod-body">
+
+            <div class="guia-block">
+              <p class="block-title">Preguntas y respuestas</p>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿A qué fondos puedo aplicar como
+                    estudiante?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Existen distintos tipos: fondos nacionales de ciencia y tecnología, premios de
+                  diseño, programas de organismos públicos y convocatorias internas de la propia incubadora. Más abajo
+                  tenés una guía con ejemplos — pero siempre conviene confirmar los detalles vigentes directamente con
+                  el
+                  HUB.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Quiénes son los actores clave del
+                    ecosistema?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">En general son cuatro grupos: la incubadora y su equipo, tus docentes y tutores,
+                  instituciones o empresas aliadas, y tus pares — compañeros, alumni y comunidad. El mapa de actores de
+                  abajo te ayuda a ubicar a cada persona en su lugar.</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trig" onclick="toggleAcc(this)"><span class="at">¿Cómo construyo red sin que resulte
+                    forzado?</span><span class="am">Ver respuesta</span></button>
+                <div class="acc-body">Pedí consejo antes que favores: preguntarle a alguien su opinión sobre tu proyecto
+                  abre una conversación genuina, mientras que pedir un favor de entrada genera distancia. Con el tiempo,
+                  esas conversaciones se transforman en la red que necesitás.</div>
+              </div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Mapa de actores — ¿a quién le escribo?</p>
+              <p style="font-size:12px;color:#444;margin-bottom:14px">Ubicá a cada persona o institución según el rol
+                que
+                cumple respecto a tu proyecto. Agregá los que necesites en cada zona.</p>
+
+              <div class="bmc-wrap">
+                <div class="bmc-banner">Mapa de Actores del Proyecto</div>
+                <div class="actormap-grid">
+                  <div class="bmc-block t5" style="grid-area:z-inc">
+                    <h4>Incubadora / HUB</h4>
+                    <p class="hint">Equipo y referentes de la incubadora que acompañan tu proyecto.</p>
+                    <div class="actor-list" id="zlist-inc"></div>
+                    <button class="btn outline sm" onclick="addActorTo('inc')">+ agregar</button>
+                  </div>
+                  <div class="bmc-block t3" style="grid-area:z-doc">
+                    <h4>Docentes y tutores</h4>
+                    <p class="hint">Profesores, tutores de cátedra o mentores académicos.</p>
+                    <div class="actor-list" id="zlist-doc"></div>
+                    <button class="btn outline sm" onclick="addActorTo('doc')">+ agregar</button>
+                  </div>
+                  <div class="bmc-block t2" style="grid-area:z-inst">
+                    <h4>Instituciones y aliados</h4>
+                    <p class="hint">Organismos, empresas o instituciones externas vinculadas al proyecto.</p>
+                    <div class="actor-list" id="zlist-inst"></div>
+                    <button class="btn outline sm" onclick="addActorTo('inst')">+ agregar</button>
+                  </div>
+                  <div class="bmc-block t4" style="grid-area:z-par">
+                    <h4>Pares y comunidad</h4>
+                    <p class="hint">Compañeros, alumni o comunidad de usuarios que pueden aportar.</p>
+                    <div class="actor-list" id="zlist-par"></div>
+                    <button class="btn outline sm" onclick="addActorTo('par')">+ agregar</button>
+                  </div>
+                </div>
+              </div>
+              <button class="btn ghost sm" onclick="downloadActorMapPDF()" style="margin-top:14px">Descargar
+                PDF</button>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Guía de financiamiento</p>
+              <p class="note" style="margin-top:0;margin-bottom:14px">Los fondos listados son ejemplos genéricos del
+                tipo
+                de convocatorias que existen en Argentina para proyectos de diseño e innovación. Confirmá siempre
+                vigencia, montos y requisitos exactos con el equipo de la incubadora antes de aplicar.</p>
+              <div id="m5-fin"></div>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Red de contactos</p>
+              <p class="note" style="margin-top:0;margin-bottom:14px">Tip: pedí consejo antes que favores — abre más
+                puertas y genera vínculos más sostenibles.</p>
+              <div id="m5-contacts"></div>
+              <button class="btn outline sm" onclick="addContact()">+ agregar contacto</button>
+            </div>
+
+            <div class="guia-block">
+              <p class="block-title">Glosario</p>
+              <input type="text" placeholder="Buscar término..." oninput="filterGlos(this.value)"
+                style="margin-bottom:14px">
+              <div id="m5-glos"></div>
+            </div>
+
+            <div class="guia-block" id="ent-m4" style="background:var(--menta)">
+              <p class="block-title">Módulo 5 completo</p>
+              <p style="font-size:13px;margin-bottom:14px">Antes de contactarte con la incubadora, repasá los
+                entregables
+                de cada módulo y reuní lo que hayas completado en un mismo documento.</p>
+              <div class="chk-item" onclick="toggleChk(this)" style="border-color:rgba(0,0,0,.2)"><input
+                  type="checkbox"><span>Mapa de actores completado</span></div>
+              <div class="chk-item" onclick="toggleChk(this)" style="border-color:rgba(0,0,0,.2)"><input
+                  type="checkbox"><span>Ficha de contactos relevantes</span></div>
+              <div class="chk-item" onclick="toggleChk(this)" style="border-color:rgba(0,0,0,.2)"><input
+                  type="checkbox"><span>Convocatorias identificadas</span></div>
+              <div class="chk-item" onclick="toggleChk(this)" style="border-color:rgba(0,0,0,.2)"><input
+                  type="checkbox"><span>Listo para agendar la consulta con la incubadora</span></div>
+              <button class="btn sm dl-btn" id="dl-4" disabled onclick="downloadModulePDF(4)"
+                style="margin-top:14px;background:var(--negro);border-color:var(--negro)">Descargar PDF</button>
+              <p class="note" id="dl-hint-4" style="border-left-color:var(--negro)">Completá los 4 casilleros para
+                habilitar la descarga.</p>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+  </div><!-- /#guia -->
+  <br>
+  <br>
+
+  <div id="footer"></div>
+
+  <script src="js/components.js?v=1"></script>
+  <script src="js/guiaestudiante.js?v=1"></script>
+</body>
+
+</html>

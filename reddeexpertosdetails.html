@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Red de Expertos | HUB DI LAD UNLa</title>
+  <meta name="description" content="Red de expertos LAD UNLa." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Red de Expertos | HUB DI LAD UNLa" />
+  <meta property="og:description" content="Red de Expertos LAD UNLa." />
+  <meta property="og:image" content="https://hubdiunla.github.io/HUB-DI-LAD/assets/images/logohubteal.png" />
+  <meta property="og:url" content="https://hubdiunla.github.io/HUB-DI-LAD/ofertarecursos.html" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Red de Expertos | HUB DI LAD UNLa" />
+  <meta name="twitter:description" content="Red de Expertos LAD UNLa." />
+  <meta name="twitter:image" content="https://hubdiunla.github.io/HUB-DI-LAD/assets/images/logohubteal.png" />
+
+  <link rel="icon" href="assets/images/logohubfavicom.ico" type="image/x-icon" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script src="js/tailwind.config.js?v=1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="css/style.css?v=6" />
+
+  <style>
+    .experts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .expert-card {
+      background: #fff;
+      border: 1px solid #d8d8d8;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .expert-left img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .course-social-links {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .course-social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    .course-social-link:hover {
+      background: #404A4D;
+      border-color: #404A4D;
+      color: #fff;
+    }
+
+    .course-social-link:not(.location-link) {
+      width: 42px;
+      flex: 0 0 42px;
+    }
+
+    .location-link {
+      flex: 1;
+      min-width: 0;
+      padding: 0 10px;
+      gap: 7px;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .expert-right {
+      min-width: 0;
+    }
+
+    .course-item-title {
+      font-family: "Roboto Mono", monospace;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .expert-data {
+      margin-top: 12px;
+      padding-top: 14px;
+      border-top: 1px solid #d8d8d8;
+    }
+
+    .expert-data p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .expert-data strong {
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .expert-details {
+      margin-top: 18px;
+    }
+
+    .expert-details summary {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #000;
+      padding: 10px 14px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      list-style: none;
+    }
+
+    .expert-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .expert-details[open] summary {
+      margin-bottom: 18px;
+    }
+
+    .expert-details[open] summary i {
+      transform: rotate(180deg);
+    }
+
+    .expert-bio {
+      border-top: 1px solid #d8d8d8;
+      padding-top: 16px;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 700px) {
+      .experts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expert-card {
+        grid-template-columns: 1fr;
+      }
+
+      .expert-left img {
+        aspect-ratio: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="navbar"></div>
+
+  <main>
+
+    <section class="resources-intro">
+      <div class="container">
+        <article class="resources-intro-card">
+          <div class="resources-intro-content">
+            <h1>Red de Expertos Profesionales del Diseño</h1>
+
+            <h2>Bienvenido a la Red de Expertos profesionales del Diseño del LAD</h2>
+
+            <p>
+              Aquí encontrarás distintos perfiles de expertos y expertas en diseño, como así tambien, en distintas problemáticas 
+              asociadas. El objetivo es acercarle los profesionales a la comunidad como la comunidad a los profesionales. 
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pt-1 pb-8 px-6">
+      <div class="container">
+
+        <div class="experts-grid">
+
+          <!-- GERMÁN KUGLIEN -->
+          <article class="expert-card">
+            <div class="expert-left">
+              <img src="assets/images/FOTOS/Germán Kuglien.jpg" alt="German Kuglien" />
+
+              <div class="course-social-links">
+                <a href="mailto:german.kuglien@gmail.com" class="course-social-link" aria-label="Correo electrónico">
+                  <i class="fas fa-envelope"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/german-kuglien/" target="_blank" class="course-social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://maps.google.com/?q=Lomas+de+Zamora" target="_blank" class="course-social-link location-link">
+                  <i class="fas fa-location-dot"></i>
+                  <span>Lomas de Zamora</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="expert-right">
+              <h3 class="course-item-title">Mg DI Germán Kuglien</h3>
+
+              <div class="expert-data">
+                <p>
+                  <strong>Experiencia:</strong> +10 años ·
+                  <strong>Especialidad:</strong> Innovación y desarrollo de negocios ·
+                  <strong>Rubro:</strong> Nuclear, aeroespacial y energía ·
+                  <strong>Empresa/Institución:</strong> CONUAR S.A.
+                </p>
+              </div>
+
+              <details class="expert-details">
+                <summary>
+                  <i class="fas fa-chevron-down"></i>
+                  Ver perfil completo
+                </summary>
+
+                <div class="expert-bio">
+                  <p>
+                    Soy un profesional técnico-comercial con más de 10 años de experiencia en el desarrollo de negocios y la gestión de 
+                    proyectos complejos en industrias de alta tecnología. Actualmente, soy Jefe de Desarrollo de Nuevos Negocios en CONUAR S.A., 
+                    una empresa líder en la fabricación de productos y sistemas tecnológicos para los sectores nuclear, aeroespacial, petroquímico 
+                    y energético. Mi misión es impulsar la innovación, la competitividad y el crecimiento de la empresa, a partir de la 
+                    investigación y el análisis de mercados, la adquisición de nuevas tecnologías, el desarrollo de nuevos productos y procesos, 
+                    la formulación de casos de negocio para la obtención de financiamiento, y la vinculación con actores clave del sistema 
+                    científico-tecnológico, gubernamental y empresario. Cuento con una sólida formación académica, con una Maestría en Dirección 
+                    Comercial, una Especialización en Gestión de la Tecnología y la Innovación, y una Licenciatura en Diseño Industrial.
+                  </p>
+
+                  <p class="mt-4">
+                    Mi campo de expertise anterior es la ingeniería y el diseño mecánico, con foco en los sectores oil&gas y metalmecánico. 
+                    He liderado y participado en diversos proyectos de ingeniería y construcción en el rubro energético, tanto en Argentina 
+                    como en el exterior. Me apasiona la tecnología, la creatividad y el aprendizaje continuo, y me motiva el desafío de generar 
+                    soluciones innovadoras y de valor para los clientes, y de impacto en la sociedad.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- NADIA BELUZO -->
+          <article class="expert-card">
+            <div class="expert-left">
+              <img src="assets/images/FOTOS/nadiabeluzo.jpeg" alt="Nadia Beluzo" />
+
+              <div class="course-social-links">
+                <a href="mailto:nadiabeluzo@gmail.com" class="course-social-link" aria-label="Correo electrónico">
+                  <i class="fas fa-envelope"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/nadiabeluzo/" target="_blank" class="course-social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://maps.google.com/?q=Banfield" target="_blank" class="course-social-link location-link">
+                  <i class="fas fa-location-dot"></i>
+                  <span>Banfield</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="expert-right">
+              <h3 class="course-item-title">MBA DI Nadia Beluzo</h3>
+
+              <div class="expert-data">
+                <p>
+                  <strong>Experiencia:</strong> +10 años ·
+                  <strong>Especialidad:</strong> Supply chain ·
+                  <strong>Rubro:</strong> Gestión Estratégica / Diseño de Servicios, Diseño Textil ·
+                  <strong>Empresa/Institución:</strong> BATUK S.A.
+                </p>
+              </div>
+
+              <details class="expert-details">
+                <summary>
+                  <i class="fas fa-chevron-down"></i>
+                  Ver perfil completo
+                </summary>
+
+                <div class="expert-bio">
+                  <p>
+                    Licenciada en Diseño Industrial, con más de diez años de experiencia en planificación de negocios, forecast y 
+                    gestión de inventarios en entornos industriales y productivos. A lo largo de mi trayectoria he combinado una mirada 
+                    analítica y estratégica con una comprensión integral del producto y del negocio, liderando procesos de planificación end-to-end 
+                    y trabajando de forma transversal con áreas de comercial, producción, compras y supply chain. He participado en la toma de 
+                    decisiones clave vinculadas a demanda, costos e inventarios, con foco en asegurar disponibilidad, optimizar stock y 
+                    proteger el capital de trabajo, incluyendo experiencia en organizaciones con altos estándares operativos y de gestión. 
+                    Cuento con un MBA en Dirección de Negocios por EUDE Business School, que fortaleció mi visión estratégica y de gestión.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- PABLO CAFFARO -->
+          <article class="expert-card">
+            <div class="expert-left">
+              <img src="assets/images/FOTOS/Pablo Caffaro - Pablo Caffaro.jpg" alt="Pablo Cafaro" />
+
+              <div class="course-social-links">
+                <a href="mailto:pablofernandocaffaro@gmail.com" class="course-social-link" aria-label="Correo electrónico">
+                  <i class="fas fa-envelope"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/pablocaffaro/" target="_blank" class="course-social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://maps.google.com/?q=Lanus" target="_blank" class="course-social-link location-link">
+                  <i class="fas fa-location-dot"></i>
+                  <span>Lanús</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="expert-right">
+              <h3 class="course-item-title">Lic. DI Pablo Caffaro</h3>
+
+              <div class="expert-data">
+                <p>
+                  <strong>Experiencia:</strong> +10 años ·
+                  <strong>Especialidad:</strong> Sustentabilidad ·
+                  <strong>Rubro:</strong> Académico Universitario ·
+                  <strong>Empresa/Institución:</strong> UNLa
+                </p>
+              </div>
+
+              <details class="expert-details">
+                <summary>
+                  <i class="fas fa-chevron-down"></i>
+                  Ver perfil completo
+                </summary>
+
+                <div class="expert-bio">
+                  <p>
+                    Soy Licenciado en Diseño Industrial y doctorando en Economía Circular y Producción Sustentable. Desde 2014, 
+                    mi trabajo se centra en transformar la intención sustentable en evidencia técnica, desarrollando metodologías para 
+                    integrar criterios ambientales medibles en el diseño de productos. Mi enfoque es el ecodiseño cuantitativo: utilizo 
+                    herramientas simplificadas de Análisis de Ciclo de Vida (ACV) para que las decisiones proyectuales se basen en datos 
+                    reales y no en soluciones superficiales. Como docente e investigador en la Universidad Nacional de Lanús, dirijo 
+                    proyectos que vinculan la academia con la práctica profesional para impulsar una transición productiva genuina.
+                  </p>
+
+                  <p class="mt-4">
+                    Colaboro con equipos que buscan: implementar economía circular desde la génesis del producto. 
+                    Sustituir el discurso ambiental por métricas de impacto (ACV). Desarrollar comunicación ambiental con respaldo técnico. 
+                    Diseño procesos donde la sustentabilidad es un parámetro de calidad, no un accesorio.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- EMILIA DI NUZZO -->
+          <article class="expert-card">
+            <div class="expert-left">
+              <img src="assets/images/FOTOS/emidinuzzo.jpg" alt="Emilia Di Nuzzo" />
+
+              <div class="course-social-links">
+                <a href="mailto:emilia.dinuzzo@gmail.com" class="course-social-link" aria-label="Correo electrónico">
+                  <i class="fas fa-envelope"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/maria-emilia-di-nuzzo-2a924b150/" target="_blank" class="course-social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://maps.google.com/?q=CABA" target="_blank" class="course-social-link location-link">
+                  <i class="fas fa-location-dot"></i>
+                  <span>CABA</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="expert-right">
+              <h3 class="course-item-title">DI Emilia Di Nuzzo</h3>
+
+              <div class="expert-data">
+                <p>
+                  <strong>Experiencia:</strong> +5 años ·
+                  <strong>Especialidad:</strong> Gestión del Diseño ·
+                  <strong>Rubro:</strong> Vinculación Tecnológica del Diseño ·
+                  <strong>Empresa/Institución:</strong> UNLa
+                </p>
+              </div>
+
+              <details class="expert-details">
+                <summary>
+                  <i class="fas fa-chevron-down"></i>
+                  Ver perfil completo
+                </summary>
+
+                <div class="expert-bio">
+                  <p>
+                    Diseñadora Industrial UNLa y maestranda en Metodologías de la Investigación Científica en la misma institución. 
+                    Posee un posgrado en Diseño de Juegos, Juguetes e Interfaces Lúdicas FADU-UBA. Su perfil académico se ha centrado en el 
+                    diseño inclusivo y en el estudio y aplicación de metodologías de diseño. Docente en las materias Métodos de Diseño, 
+                    Semiótica Aplicada al Diseño e Historia Social del Diseño I y II. Actualmente, su campo de trabajo se orienta al 
+                    desarrollo de soluciones proyectuales basadas en metodologías de diseño, dentro de una red de Talleres Protegidos del 
+                    Área Metropolitana de Buenos Aires (AMBA), con foco en la mejora de procesos y entornos inclusivos. 
+                    Desde el 2025 forma parte del consejo de redacción de la revista DSB - LAD-UNLa.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/components.js?v=2"></script>
+</body>
+</html>
